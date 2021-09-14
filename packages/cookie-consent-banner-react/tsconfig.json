@@ -1,0 +1,9 @@
+{
+      "extends": "../../tsconfig.json",
+      "compilerOptions": {
+        "declaration": true, /* Generates corresponding '.d.ts' file. */
+        "declarationDir": "./lib/typescript",
+        "outDir": "./lib", /* Redirect output structure to the directory. */
+        "moduleResolution": "node",
+      }
+}

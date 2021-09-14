@@ -1,0 +1,36 @@
+{
+	"eslint.options": {
+		"extensions": [
+			".js",
+			".jsx",
+			".html",
+			".ts",
+			".tsx"
+		]
+	},
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html"
+	],
+	"editor.formatOnSave": true,
+	"[javascript]": {
+		"editor.formatOnSave": false
+	},
+	"[javascriptreact]": {
+		"editor.formatOnSave": false
+	},
+	"[typescript]": {
+		"editor.formatOnSave": false
+	},
+	"[typescriptreact]": {
+		"editor.formatOnSave": false
+	},
+	"editor.formatOnType": true,
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	}
+}

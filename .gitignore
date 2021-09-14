@@ -1,0 +1,24 @@
+# Project dependencies
+node_modules/
+
+# Misc
+.DS_Store
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.idea/
+/tmp
+
+
+# Yarn 2 Zero-Installs
+# .yarn/*
+# !.yarn/cache
+# !.yarn/releases
+# !.yarn/plugins
+# !.yarn/sdks
+# !.yarn/versions
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

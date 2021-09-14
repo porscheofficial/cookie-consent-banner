@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Cookie Consent Banner</title>
+
+    <script type="module" src="/build/cookie-consent-banner.esm.js"></script>
+    <script nomodule src="/build/cookie-consent-banner.js"></script>
+
+    <style>
+      body {
+        font-family: "Avenir Next", ‘Avenir, "Segoe UI", "Lucida Grande",
+          "Lucida Sans Unicode", sans-serif;
+      }
+      a {
+        color: white;
+      }
+      /* :root {
+        --cookie-consent-banner-colors-primary: red;
+        --cookie-consent-banner-colors-primary-border: var(
+          --cookie-consent-banner-colors-primary
+        );
+        --cookie-consent-banner-colors-primary-content: #fff;
+        --cookie-consent-banner-colors-secondary: transparent;
+        --cookie-consent-banner-colors-secondary-border: #fff;
+        --cookie-consent-banner-colors-secondary-content: #fff;
+        --cookie-consent-banner-colors-background-body: rgba(25,31,34,0.92);
+        --cookie-consent-banner-colors-text: #fff;
+
+        --cookie-consent-banner-font-family-body: Times;
+        --cookie-consent-banner-font-family-headline: courier;
+
+        --cookie-consent-banner-border-radius-buttons: 1rem;
+        --cookie-consent-banner-border-radius-body: 0;
+
+        --cookie-consent-banner-spacings-container-padding-top: 0;
+        --cookie-consent-banner-spacings-container-padding-left: 0;
+        --cookie-consent-banner-spacings-container-padding-bottom: 0;
+        --cookie-consent-banner-spacings-container-padding-right: 0;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <a
+      href="javascript:document.dispatchEvent(new Event('cookie_consent_show'))"
+      >Trigger Banner</a
+    >
+
+    <cookie-consent-banner
+      btn-label-accept-and-continue="Agree and continue"
+      btn-label-all-and-continue="Select all and continue"
+      btn-label-only-essential-and-continue="Continue with technically required cookies only"
+      content-settings-description="You can decide which cookies are used by selecting the respective options below. Please note that your selection may impair in the functionality of the service."
+    >
+      We use cookies and similar technologies to provide certain features,
+      enhance the user experience and deliver content that is relevant to your
+      interests. Depending on their purpose, analysis and marketing cookies may
+      be used in addition to technically necessary cookies. By clicking on
+      "Agree and continue", you declare your consent to the use of the
+      aforementioned cookies.
+      <a
+        href="javascript:document.dispatchEvent(new Event('cookie_consent_details_show'))"
+        >Here</a
+      >
+      you can make detailed settings or revoke your consent (in part if
+      necessary) with effect for the future. For further information, please
+      refer to our
+      <a href="/privacy-policy">Privacy Policy</a>.
+    </cookie-consent-banner>
+
+    <script>
+      const cookieConsentBannerElement = document.querySelector(
+        "cookie-consent-banner"
+      );
+      // // EXAMPLE Remove Marketing
+      cookieConsentBannerElement.availableCategories = [
+        {
+          label: "Technically necessary cookies",
+          key: "technically_required",
+          description:
+            "Enable you to navigate and use the basic functions and to store preferences.",
+          isMandatory: true,
+        },
+        {
+          label: "Analysis cookies",
+          key: "analytics",
+          description:
+            "Enable us to determine how visitors interact with our service in order to improve the user experience.",
+        },
+      ];
+    </script>
+  </body>
+
+  <script>
+    window.addEventListener("cookie_consent_restored", () =>
+      console.log("restored")
+    );
+    window.addEventListener("cookie_consent_updated", () =>
+      console.log("updated")
+    );
+  </script>
+</html>
