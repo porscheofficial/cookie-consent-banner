@@ -31,9 +31,9 @@ _Make sure to also have a look on the [main repository](https://github.com/porsc
 
 ```bash
 // yarn
-yarn add @porscheofficial/cookie-consent-banner
+yarn add @porscheofficial/cookie-consent-banner-react
 // or npm
-npm i @porscheofficial/cookie-consent-banner --S
+npm i @porscheofficial/cookie-consent-banner-react --S
 ```
 
 ### Properties

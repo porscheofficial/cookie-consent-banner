@@ -40,12 +40,8 @@ npm i @porscheofficial/cookie-consent-banner --S
 
 ```html
 <script
-  nomodule
-  src="PATH/TO/PACKAGE/@porscheofficial/components-js/dist/cookie-consent-banner/cookie-consent-banner.js"
-></script>
-<script
   type="module"
-  src="PATH/TO/PACKAGE/@porscheofficial/components-js/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@1.0.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
 ></script>
 ```
 
@@ -143,12 +139,8 @@ Have a look on the main repository for an [example consent flow](https://github.
 ```html
 <!-- Import Web Component -->
 <script
-  nomodule
-  src="PATH/TO/PACKAGE/@porscheofficial/components-js/dist/cookie-consent-banner/cookie-consent-banner.js"
-></script>
-<script
   type="module"
-  src="PATH/TO/PACKAGE/@porscheofficial/components-js/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@1.0.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
 ></script>
 <!-- Update Styles-->
 <style>
