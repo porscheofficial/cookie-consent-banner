@@ -9,8 +9,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/porscheofficial/cookie-consent-banner/master/LICENSE)
 [![npm](https://img.shields.io/npm/dm/@porscheofficial/cookie-consent-banner.svg)](https://www.npmjs.com/package/porscheofficial/cookie-consent-banner)
 
-
-👉 _See the component in action on the websites of the following projects: [**Cyklær**](https://www.cyklaer.de), [**SOUNCE**](https://www.sounce.io) and [**VIN-Art**](https://www.vinart.digital)._ 👈
+👉 _See the component in action on the websites of the following projects: [**Cyklær**](https://www.cyklaer.de), [**SOUNCE**](https://www.sounce.io) and [**VIN-Art**](https://www.vinart.digital/?s=ccb)._ 👈
 
 </div>
   
