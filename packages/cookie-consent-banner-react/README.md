@@ -10,7 +10,7 @@
 The Cookie Consent Banner is implemented as Web Component and additionally exported as React Component.
 This guide explains how to use the React Component.
 
-_Click here to have a look on the documentation of the [Web Component](https://github.com/porscheofficial/cookie-consent-banner/packages/cookie-consent-banner)._  
+_Click here to have a look on the documentation of the [Web Component](https://github.com/porscheofficial/cookie-consent-banner/tree/main/packages/cookie-consent-banner)._  
 _Make sure to also have a look on the [main repository](https://github.com/porscheofficial/cookie-consent-banner)._
 
 ---
