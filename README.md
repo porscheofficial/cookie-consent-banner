@@ -41,7 +41,7 @@ There are two typical scenarios. Either the external scripts, which set cookies 
 
 The flow could look like this. Every script that sets cookies which require a consent from the visitor is blocked by default.
 Instead, the Consent Banner is shown. Once the visitor updates it's preferences an event is triggered (`cookie_consent_preferences_updated`).
-Additionally the consent data is stored within a cookie in a format that can be parsed either programatically or with a tag manager (e.g.: name: `cookies_accepted_categories`, value: `technically_required,analytics,marketing`). A tag manager could read the value of that `1st-Party Cookie` before any other script (tag) is loaded (e.g.: Fire trigger only `if Accepted Cookie Categories contains marketing`).
+Additionally the consent data is stored within a cookie in a format that can be parsed either programmatically or with a tag manager (e.g.: name: `cookies_accepted_categories`, value: `technically_required,analytics,marketing`). A tag manager could read the value of that `1st-Party Cookie` before any other script (tag) is loaded (e.g.: Fire trigger only `if Accepted Cookie Categories contains marketing`).
 
 ![](./assets/consentFlow.svg)
 
