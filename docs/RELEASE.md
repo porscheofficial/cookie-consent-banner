@@ -24,5 +24,5 @@ Yes, but keep in mind that one PR must only equal to one feature or fix.
 6. Stage changes: `git add`
 7. Commit changes: `git cz --type release`
 8. Generate a new tag based on the updated version number (in sync between packages): `git tag -a v[version]`
-9. Push to GitHub
-10. Release packages to npm
+9. Push to GitHub: `git push --tags`
+10. Release packages separately: `npm publish`
