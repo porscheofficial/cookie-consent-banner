@@ -1,7 +1,7 @@
 {
   "name": "@porscheofficial/cookie-consent-banner-react",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/porscheofficial/cookie-consent-banner",
@@ -11,9 +11,10 @@
     "build:module": "tsc --outDir ./lib/module --sourceMap",
     "build:commonjs": "tsc --module commonjs --outDir ./lib/commonjs --sourceMap",
     "build": "rimraf ./lib && yarn build:module && yarn build:commonjs",
-    "test:ci": "yarn eslint:ci",
     "eslint:ci": "eslint ./src/index.ts --ext .js,.jsx,.tsx,.ts -f table",
-    "eslint:fix": "eslint ./src/index.ts --fix --ext .js,.jsx,.tsx,.ts -f table"
+    "eslint:fix": "eslint ./src/index.ts --fix --ext .js,.jsx,.tsx,.ts -f table",
+    "test:ci": "yarn eslint:ci",
+    "release:prepare": "standard-version"
   },
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -29,16 +30,23 @@
     "react": "*",
     "react-dom": "*"
   },
+  "standard-version": {
+    "skip": {
+      "tag": true,
+      "commit": true
+    }
+  },
   "dependencies": {
     "@porscheofficial/cookie-consent-banner": "*"
   },
   "devDependencies": {
-    "@types/react": "17.0.20",
+    "@types/react": "17.0.26",
     "@types/react-dom": "17.0.9",
-    "eslint": "^7.32.0",
+    "eslint": "7.32.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "rimraf": "3.0.2",
-    "typescript": "^4.4.2"
+    "standard-version": "9.3.1",
+    "typescript": "4.4.3"
   }
 }

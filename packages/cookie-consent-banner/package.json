@@ -1,7 +1,7 @@
 {
   "name": "@porscheofficial/cookie-consent-banner",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/porscheofficial/cookie-consent-banner",
@@ -9,13 +9,14 @@
   },
   "scripts": {
     "build": "stencil build",
+    "eslint:ci": "eslint ./src/ --ext .js,.jsx,.tsx,.ts -f table",
+    "eslint:fix": "eslint ./src/ --fix --ext .js,.jsx,.tsx,.ts -f table",
     "start": "stencil build --dev --watch --serve",
     "generate": "stencil generate",
+    "release:prepare": "standard-version",
     "test": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
-    "test:ci": "yarn eslint:ci && stencil test --spec --passWithNoTests",
-    "eslint:ci": "eslint ./src/ --ext .js,.jsx,.tsx,.ts -f table",
-    "eslint:fix": "eslint ./src/ --fix --ext .js,.jsx,.tsx,.ts -f table"
+    "test:ci": "yarn eslint:ci && stencil test --spec --passWithNoTests"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -33,16 +34,23 @@
     "LICENSE.md",
     "NOTICE.md"
   ],
+  "standard-version": {
+    "skip": {
+      "tag": true,
+      "commit": true
+    }
+  },
   "dependencies": {
     "@stencil/core": "2.8.0"
   },
   "devDependencies": {
-    "@stencil/react-output-target": "0.0.12",
+    "@stencil/react-output-target": "0.1.0",
     "@types/jest": "26.0.24",
     "@types/puppeteer": "5.4.4",
-    "eslint": "^7.32.0",
+    "eslint": "7.32.0",
     "jest": "26.6.3",
     "jest-cli": "26.6.3",
-    "puppeteer": "10.2.0"
+    "puppeteer": "10.2.0",
+    "standard-version": "9.3.1"
   }
 }
