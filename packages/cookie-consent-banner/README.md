@@ -55,8 +55,9 @@ npm i @porscheofficial/cookie-consent-banner --S
 | `disable-reset-site-cookies-on-consent-withdrawn` | `false`                         | `boolean`        | Prevent cookies from being deleted automatically if consent of the user changed. |
 | `headline`                                        | `undefined`                     | `string`         |                                                                                  |
 | `btn-label-accept-and-continue`                   | `undefined`                     | `string`         |                                                                                  |
-| `btn-label-all-and-continue`                      | `undefined`                     | `string`         |                                                                                  |
+| `btn-label-select-all-and-continue`               | `undefined`                     | `string`         |                                                                                  |
 | `btn-label-only-essential-and-continue`           | `undefined`                     | `string`         |                                                                                  |
+| `btn-label-persist-selection-and-continue`        | `undefined`                     | `string`         |
 | `content-settings-description`                    | `undefined`                     | `string`         |                                                                                  |
 
 ### Events Dispatched by the Component
@@ -165,8 +166,9 @@ Have a look on the main repository for an [example consent flow](https://github.
 <!-- Init Web Component -->
 <cookie-consent-banner
   btn-label-accept-and-continue="Agree and continue"
-  btn-label-all-and-continue="Select all and continue"
   btn-label-only-essential-and-continue="Continue with technically required cookies only"
+  btn-label-persist-selection-and-continue="Save selection and continue"
+  btn-label-select-all-and-continue="Select all and continue"
   content-settings-description="You can decide which cookies are used by selecting the respective options below. Please note that your selection may impair in the functionality of the service."
 >
   We use cookies and similar technologies to provide certain features, enhance

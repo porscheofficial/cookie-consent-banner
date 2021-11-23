@@ -48,6 +48,7 @@ npm i @porscheofficial/cookie-consent-banner-react --S
 | `btnLabelAcceptAndContinue`                 | `undefined`                     | `string`                                                               |                                                                                  |
 | `btnLabelAllAndContinue`                    | `undefined`                     | `string`                                                               |                                                                                  |
 | `btnLabelOnlyEssentialAndContinue`          | `undefined`                     | `string`                                                               |                                                                                  |
+| `btnLabelPersistSelectionAndContinue`       | `undefined`                     | `string`                                                               |                                                                                  |
 | `contentSettingsDescription`                | `undefined`                     | `string`                                                               |                                                                                  |
 | `handlePreferencesRestored`                 | `undefined`                     | `({ acceptedCategories, }: { acceptedCategories: string[]; }) => void` |
 | `handlePreferencesUpdated`                  | `undefined`                     | `({ acceptedCategories, }: { acceptedCategories: string[]; }) => void` |                                                                                  |
@@ -170,8 +171,9 @@ const [acceptedCategories, setAcceptedCategories] = useState<string[]>([]);
     </div>
     <CookieConsentBanner
         btnLabelAcceptAndContinue="Agree and continue"
-        btnLabelAllAndContinue="Select all and continue"
+        btnLabelSelectAllAndContinue="Select all and continue"
         btnLabelOnlyEssentialAndContinue="Continue with technically required cookies only"
+        btnLabelPersistSelectionAndContinue="Save selection and continue"
         contentSettingsDescription="You can decide which cookies are used by selecting the respective options below. Please note that your selection may impair in the functionality of the service."
         availableCategories={[
           {

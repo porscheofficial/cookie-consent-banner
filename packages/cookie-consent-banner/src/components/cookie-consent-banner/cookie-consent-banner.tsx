@@ -40,13 +40,16 @@ export class CookieConsentBanner {
   // BTN Label Accept and Continue
   @Prop() public btnLabelAcceptAndContinue: string;
 
-  // BTN Label Accept and Continue
-  @Prop() public btnLabelAllAndContinue: string;
-
   // BTN Label Only essential and Continue
   @Prop() public btnLabelOnlyEssentialAndContinue: string;
 
-  // CONTENT Settings Description
+  // BTN Label Select all and Continue
+  @Prop() public btnLabelSelectAllAndContinue: string;
+
+  // BTN Label Persist selection and Continue
+  @Prop() public btnLabelPersistSelectionAndContinue: string;
+
+  // CONTENT Settings description
   @Prop() public contentSettingsDescription: string;
 
   // Event Handler
@@ -254,7 +257,7 @@ export class CookieConsentBanner {
                   onClick={() => this.persistSelection()}
                   onKeyPress={() => this.persistSelection()}
                 >
-                  {this.btnLabelAcceptAndContinue}
+                  {this.btnLabelPersistSelectionAndContinue}
                 </button>
               )}
               {!this.isShownSettings &&
@@ -275,7 +278,7 @@ export class CookieConsentBanner {
               >
                 {!this.isShownSettings
                   ? this.btnLabelAcceptAndContinue
-                  : this.btnLabelAllAndContinue}
+                  : this.btnLabelSelectAllAndContinue}
               </button>
             </div>
           </form>
