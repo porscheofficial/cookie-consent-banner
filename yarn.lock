@@ -746,7 +746,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner"
   dependencies:
-    "@stencil/core": 2.8.0
+    "@stencil/core": 2.11.0
     "@stencil/react-output-target": 0.1.0
     "@types/jest": 26.0.24
     "@types/puppeteer": 5.4.4
@@ -776,12 +776,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:2.8.0":
-  version: 2.8.0
-  resolution: "@stencil/core@npm:2.8.0"
+"@stencil/core@npm:2.11.0":
+  version: 2.11.0
+  resolution: "@stencil/core@npm:2.11.0"
   bin:
     stencil: bin/stencil
-  checksum: b3e99b00fd508878641d71f5e97c8d4f9b1b1aebdb2258539153d61a86c47d6a37849f16f39bf45d0f5aa6eee1fb5af2b195855099c7a3246c7d8281f57b918c
+  checksum: 90bbf7d8866507b1758b44d5f1a5d197853c135e32a9b665643c4b034d41dedbe17af282c9328cfe0d0e3f57fa0b07c660ec834e4f7656de82cb5ac69cf9a8b5
   languageName: node
   linkType: hard
 
