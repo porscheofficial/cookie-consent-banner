@@ -21,7 +21,9 @@ _Make sure to also have a look on the [main repository](https://github.com/porsc
   - [Events Dispatched](#events-dispatched-by-the-component)
   - [Events Receivable](#events-receivable-by-the-component)
   - [Styling](#styling)
-- [Real World Example](#rocket-real-world-example)
+- [Real World Examples](#rocket-real-world-examples)
+  - [with Tag Manager](#with-tag-manager)
+  - [without Tag Manager](#without-tag-manager)
 - [Disclaimer](#disclaimer)
 - [License](#license)
 
