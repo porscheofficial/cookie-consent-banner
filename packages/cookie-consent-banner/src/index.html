@@ -16,32 +16,23 @@
         font-family: "Avenir Next", ‘Avenir, "Segoe UI", "Lucida Grande",
           "Lucida Sans Unicode", sans-serif;
       }
-      a {
-        color: white;
-      }
-      /* :root {
-        --cookie-consent-banner-colors-primary: red;
+      :root {
+        --cookie-consent-banner-z-index-container: 1000;
+        --cookie-consent-banner-colors-primary: blue;
         --cookie-consent-banner-colors-primary-border: var(
           --cookie-consent-banner-colors-primary
         );
         --cookie-consent-banner-colors-primary-content: #fff;
-        --cookie-consent-banner-colors-secondary: transparent;
-        --cookie-consent-banner-colors-secondary-border: #fff;
-        --cookie-consent-banner-colors-secondary-content: #fff;
-        --cookie-consent-banner-colors-background-body: rgba(25,31,34,0.92);
         --cookie-consent-banner-colors-text: #fff;
 
-        --cookie-consent-banner-font-family-body: Times;
-        --cookie-consent-banner-font-family-headline: courier;
-
-        --cookie-consent-banner-border-radius-buttons: 1rem;
+        --cookie-consent-banner-border-radius-buttons: 10px;
         --cookie-consent-banner-border-radius-body: 0;
 
-        --cookie-consent-banner-spacings-container-padding-top: 0;
+        --cookie-consent-banner-spacings-container-padding-top: 50;
         --cookie-consent-banner-spacings-container-padding-left: 0;
         --cookie-consent-banner-spacings-container-padding-bottom: 0;
         --cookie-consent-banner-spacings-container-padding-right: 0;
-      } */
+      }
     </style>
   </head>
 
@@ -66,12 +57,14 @@
       aforementioned cookies.
       <a
         href="javascript:document.dispatchEvent(new Event('cookie_consent_details_show'))"
-        >Here</a
       >
+        Here
+      </a>
       you can make detailed settings or revoke your consent (in part if
       necessary) with effect for the future. For further information, please
       refer to our
-      <a href="/privacy-policy">Privacy Policy</a>.
+      <a href="/privacy-policy">Privacy Policy</a>
+      .
     </cookie-consent-banner>
 
     <script>
@@ -81,28 +74,75 @@
       // // EXAMPLE Remove Marketing
       cookieConsentBannerElement.availableCategories = [
         {
-          label: "Technically necessary cookies",
-          key: "technically_required",
           description:
             "Enable you to navigate and use the basic functions and to store preferences.",
+          key: "technically_required",
+          label: "Technically necessary cookies",
           isMandatory: true,
         },
         {
-          label: "Analysis cookies",
-          key: "analytics",
           description:
             "Enable us to determine how visitors interact with our service in order to improve the user experience.",
+          key: "analytics",
+          label: "Analysis cookies",
         },
       ];
     </script>
   </body>
 
   <script>
-    window.addEventListener("cookie_consent_restored", () =>
-      console.log("restored")
-    );
-    window.addEventListener("cookie_consent_updated", () =>
-      console.log("updated")
-    );
+    // =========================================================================
+    // EXAMPLE
+    // ANALYTICS w/o TAG MANAGER
+    // =========================================================================
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "ENTERID");
+
+    function loadAnalyticsScript() {
+      // Add Script only once
+      const scriptElementExists = document.querySelector(
+        "[data-scriptid='ga']"
+      );
+      if (scriptElementExists || window?.ga) return;
+
+      const firstScriptElement = document.getElementsByTagName("script")[0];
+
+      const scriptElement = document.createElement("script");
+      scriptElement.type = "text/javascript";
+      scriptElement.setAttribute("async", "true");
+      scriptElement.setAttribute(
+        "src",
+        "https://www.googletagmanager.com/gtag/js?id=ENTERID"
+      );
+      scriptElement.setAttribute("data-scriptid", "ga");
+
+      firstScriptElement.parentNode.insertBefore(
+        scriptElement,
+        firstScriptElement
+      );
+    }
+    // =========================================================================
+    // COOKIE CONSENT: LOAD SCRIPTS AFTER USER INTERACTION
+    // =========================================================================
+    function loadScripts(event) {
+      const acceptedCategories = event?.detail?.acceptedCategories;
+
+      if (acceptedCategories.includes("analytics")) {
+        console.log("Analytics accepted.");
+
+        loadAnalyticsScript();
+      }
+      if (acceptedCategories.includes("marketing")) {
+        console.log("Marketing accepted.");
+      }
+    }
+
+    window.addEventListener("cookie_consent_preferences_restored", loadScripts);
+    window.addEventListener("cookie_consent_preferences_updated", loadScripts);
   </script>
 </html>

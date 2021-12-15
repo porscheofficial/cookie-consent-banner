@@ -130,7 +130,9 @@ The appearance of the component can be influenced by updating the availabe CSS P
 </style>
 ```
 
-## :rocket: Real World Example
+## :rocket: Real World Examples
+
+### ...with Tag Manager
 
 This example shows how the component could be integrated into your web application by leveraging the features of a tag manager.
 The tag manager is not loaded as long as there is no consent given.
@@ -141,7 +143,7 @@ Have a look on the main repository for an [example consent flow](https://github.
 <!-- Import Web Component -->
 <script
   type="module"
-  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@1.0.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
 ></script>
 <!-- Update Styles-->
 <style>
@@ -244,6 +246,150 @@ Have a look on the main repository for an [example consent flow](https://github.
     loadTagManager
   );
   window.addEventListener("cookie_consent_preferences_updated", loadTagManager);
+</script>
+```
+
+### ...without Tag Manager
+
+This example shows how the component could be integrated into your web application without leveraging the features of a tag manager.
+The scripts are not loaded as long as there is no consent given.
+Once the visitor stores the consent settings, two things happen: The consent data is stored as a cookie `cookies_accepted_categories` and the script elements are added to the page.
+
+```html
+<!-- Import Web Component -->
+<script
+  type="module"
+  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+></script>
+<!-- Update Styles-->
+<style>
+  :root {
+    --cookie-consent-banner-z-index-container: 101;
+    --cookie-consent-banner-colors-primary: rgba(0, 255, 255, 0.82);
+    --cookie-consent-banner-colors-primary-border: var(
+      --cookie-consent-banner-colors-primary
+    );
+    --cookie-consent-banner-colors-primary-content: #fff;
+
+    --cookie-consent-banner-border-radius-buttons: 100px;
+    --cookie-consent-banner-border-radius-body: 0;
+
+    --cookie-consent-banner-spacings-container-padding-top: 0;
+    --cookie-consent-banner-spacings-container-padding-left: 0;
+    --cookie-consent-banner-spacings-container-padding-bottom: 0;
+    --cookie-consent-banner-spacings-container-padding-right: 0;
+  }
+</style>
+
+<!-- Init Web Component -->
+<cookie-consent-banner
+  btn-label-accept-and-continue="Agree and continue"
+  btn-label-only-essential-and-continue="Continue with technically required cookies only"
+  btn-label-persist-selection-and-continue="Save selection and continue"
+  btn-label-select-all-and-continue="Select all and continue"
+  content-settings-description="You can decide which cookies are used by selecting the respective options below. Please note that your selection may impair in the functionality of the service."
+>
+  We use cookies and similar technologies to provide certain features, enhance
+  the user experience and deliver content that is relevant to your interests.
+  Depending on their purpose, analysis and marketing cookies may be used in
+  addition to technically necessary cookies. By clicking on "Agree and
+  continue", you declare your consent to the use of the aforementioned cookies.
+  <a
+    href="javascript:document.dispatchEvent(new Event('cookie_consent_details_show'))"
+  >
+    Here
+  </a>
+  you can make detailed settings or revoke your consent (in part if necessary)
+  with effect for the future. For further information, please refer to our
+  <a href="/privacy-policy">Privacy Policy</a>
+  .
+</cookie-consent-banner>
+
+<!-- Open Banner again -->
+<a href="javascript:document.dispatchEvent(new Event('cookie_consent_show'))">
+  Show Cookie Consent Settings
+</a>
+
+<script>
+  /* Update available Cookie Categories */
+  const cookieConsentBannerElement = document.querySelector(
+    "cookie-consent-banner"
+  );
+  cookieConsentBannerElement.availableCategories = [
+    {
+      description:
+        "Enable you to navigate and use the basic functions and to store preferences.",
+      key: "technically_required",
+      label: "Technically necessary cookies",
+      isMandatory: true,
+    },
+    {
+      description:
+        "Enable us to determine how visitors interact with our service in order to improve the user experience.",
+      key: "analytics",
+      label: "Analysis cookies",
+    },
+    {
+      description:
+        "Enable us to offer and evaluate relevant content and interest-based advertising.",
+      key: "marketing",
+      label: "Marketing cookies",
+    },
+  ];
+</script>
+
+<script>
+  // =========================================================================
+  // EXAMPLE
+  // ANALYTICS w/o TAG MANAGER
+  // =========================================================================
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "ENTERID");
+
+  function loadAnalyticsScript() {
+    // Add Script only once
+    const scriptElementExists = document.querySelector("[data-scriptid='ga']");
+    if (scriptElementExists || window?.ga) return;
+
+    const firstScriptElement = document.getElementsByTagName("script")[0];
+
+    const scriptElement = document.createElement("script");
+    scriptElement.type = "text/javascript";
+    scriptElement.setAttribute("async", "true");
+    scriptElement.setAttribute(
+      "src",
+      "https://www.googletagmanager.com/gtag/js?id=ENTERID"
+    );
+    scriptElement.setAttribute("data-scriptid", "ga");
+
+    firstScriptElement.parentNode.insertBefore(
+      scriptElement,
+      firstScriptElement
+    );
+  }
+  // =========================================================================
+  // COOKIE CONSENT: LOAD SCRIPTS AFTER USER INTERACTION
+  // =========================================================================
+  function loadScripts(event) {
+    const acceptedCategories = event?.detail?.acceptedCategories;
+
+    if (acceptedCategories.includes("analytics")) {
+      console.log("Analytics accepted.");
+
+      loadAnalyticsScript();
+    }
+    if (acceptedCategories.includes("marketing")) {
+      console.log("Marketing accepted.");
+    }
+  }
+
+  window.addEventListener("cookie_consent_preferences_restored", loadScripts);
+  window.addEventListener("cookie_consent_preferences_updated", loadScripts);
 </script>
 ```
 
