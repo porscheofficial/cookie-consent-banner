@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build": "stencil build",
-    "eslint:ci": "eslint ./src/ --ext .js,.jsx,.tsx,.ts -f table",
-    "eslint:fix": "eslint ./src/ --fix --ext .js,.jsx,.tsx,.ts -f table",
+    "eslint:ci": "eslint ./src/ --ext .js,.jsx,.tsx,.ts",
+    "eslint:fix": "eslint ./src/ --fix --ext .js,.jsx,.tsx,.ts",
     "start": "stencil build --dev --watch --serve",
     "generate": "stencil generate",
     "release:prepare": "standard-version",
@@ -41,16 +41,16 @@
     }
   },
   "dependencies": {
-    "@stencil/core": "2.8.0"
+    "@stencil/core": "2.11.0"
   },
   "devDependencies": {
     "@stencil/react-output-target": "0.1.0",
     "@types/jest": "26.0.24",
     "@types/puppeteer": "5.4.4",
-    "eslint": "7.32.0",
+    "eslint": "8.3.0",
     "jest": "26.6.3",
     "jest-cli": "26.6.3",
-    "puppeteer": "10.2.0",
-    "standard-version": "9.3.1"
+    "puppeteer": "10.4.0",
+    "standard-version": "9.3.2"
   }
 }

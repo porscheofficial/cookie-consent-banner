@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 export * from "./stencilproxy/components";
 
-function isCustomEvent(event: Event): event is CustomEvent {
-  return "acceptedCategories" in event;
+function isCustomEvent(event: Event): event is CustomEvent<{
+  acceptedCategories: string[];
+}> {
+  return "detail" in event;
 }
 
 export function useCookieConsent(): string[] {
@@ -10,7 +12,7 @@ export function useCookieConsent(): string[] {
 
   const acceptedCategoriesListener: EventListener = (event) => {
     if (isCustomEvent(event)) {
-      setAcceptedCategories(event?.detail?.acceptedCategories ?? []);
+      setAcceptedCategories(event.detail.acceptedCategories ?? []);
     }
   };
 
