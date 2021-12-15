@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.0.1...v2.1.0) (2021-12-15)
+
+### Features
+
+- 🎸 forward a, p and label styles to slot ([47d86c5](https://github.com/porscheofficial/cookie-consent-banner/commit/47d86c540cfb1649b03cadb780ac295cf4ac4045))
+
+### Bug Fixes
+
+- 🐛 revert to stencil 2.11 ([183eef7](https://github.com/porscheofficial/cookie-consent-banner/commit/183eef76b38bfdf8ecff55a43e0366c9bd807eaa))
+
 ### [2.0.1](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.0.0...v2.0.1) (2021-12-15)
 
 ### Bug Fixes
