@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.1.0...v2.1.1) (2022-01-17)
+
+### Bug Fixes
+
+- 🐛 correctly handle click on essentialsOnly ([c1c3963](https://github.com/porscheofficial/cookie-consent-banner/commit/c1c3963dfda3a9c138e6c4db859e65875fdfa17f)), closes [#3](https://github.com/porscheofficial/cookie-consent-banner/issues/3)
+
 ## [2.1.0](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.0.1...v2.1.0) (2021-12-15)
 
 ### Features
