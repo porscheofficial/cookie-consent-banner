@@ -183,6 +183,16 @@ export class CookieConsentBanner {
     this.persistSelection();
   }
 
+  private handleEssentialsOnly(): void {
+    const mandatoryCategories = this.availableCategories.filter(
+      (category) => category.isMandatory
+    );
+    this.acceptedCategoriesNext = mandatoryCategories.map(
+      (category) => category.key
+    );
+    this.persistSelection();
+  }
+
   /* eslint-disable-next-line @typescript-eslint/explicit-member-accessibility,@typescript-eslint/member-ordering */
   public render(): JSX.Element {
     if (!this.isShown) {
@@ -265,8 +275,8 @@ export class CookieConsentBanner {
                   <button
                     class="secondary"
                     type="button"
-                    onClick={() => this.persistSelection()}
-                    onKeyPress={() => this.persistSelection()}
+                    onClick={() => this.handleEssentialsOnly()}
+                    onKeyPress={() => this.handleEssentialsOnly()}
                   >
                     {this.btnLabelOnlyEssentialAndContinue}
                   </button>
