@@ -29,6 +29,7 @@
   "unpkg": "dist/cookie-consent-banner/cookie-consent-banner.js",
   "files": [
     "dist/",
+    "src/",
     "loader/",
     "README.md",
     "LICENSE.md",
