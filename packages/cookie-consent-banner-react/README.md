@@ -21,7 +21,7 @@ _Make sure to also have a look on the [main repository](https://github.com/porsc
   - [Events Dispatched](#events-dispatched-by-the-component)
   - [Events Receivable](#events-receivable-by-the-component)
   - [Styling](#styling)
-- [Real World Example](#rocket-real-world-example-with-tag-manager-and-custom-error-tracking)
+- [Real World Example](#-real-world-example-with-tag-manager-and-custom-error-tracking)
 - [Disclaimer](#disclaimer)
 - [License](#license)
 
@@ -136,10 +136,7 @@ Have a look on the main repository for an [example consent flow](https://github.
 ```jsx
 import { CookieConsentBanner } from "@porscheofficial/cookie-consent-banner-react";
 
-
-const initConsent = ({
-  acceptedCategories,
-}) => {
+const initConsent = ({ acceptedCategories }) => {
   // -------------------------------------------------------------------------
   // Error Tracking Service
   // Analytics
@@ -152,24 +149,22 @@ const initConsent = ({
   }
 };
 
+const Root = ({ children }) => {
+  const [acceptedCategories, setAcceptedCategories] = useState([]);
 
-const Root = ({children}) => {
-const [acceptedCategories, setAcceptedCategories] = useState<string[]>([]);
-
-<div>
-    <Helmet>
-    {(Boolean(acceptedCategories.includes("analytics")) ||
+  return (
+    <div>
+      <Helmet>
+        {(Boolean(acceptedCategories.includes("analytics")) ||
           Boolean(acceptedCategories.includes("marketing"))) &&
           process.env.ENV === "prod" && (
             <script id="tagmanager-script" key="tagmanager-script">
               {/* Load Tag Manager Script */}
             </script>
           )}
-    </Helmet>
-    <div>
-        {children}
-    </div>
-    <CookieConsentBanner
+      </Helmet>
+      <div>{children}</div>
+      <CookieConsentBanner
         btnLabelAcceptAndContinue="Agree and continue"
         btnLabelSelectAllAndContinue="Select all and continue"
         btnLabelOnlyEssentialAndContinue="Continue with technically required cookies only"
@@ -219,8 +214,9 @@ const [acceptedCategories, setAcceptedCategories] = useState<string[]>([]);
         refer to our
         <a href="/privacy-policy">Privacy Policy</a>.
       </CookieConsentBanner>
-</div>
-}
+    </div>
+  );
+};
 ```
 
 ---
