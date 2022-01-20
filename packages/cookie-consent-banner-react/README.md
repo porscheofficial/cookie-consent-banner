@@ -165,6 +165,8 @@ const Root = ({ children }) => {
       </Helmet>
       <div>{children}</div>
       <CookieConsentBanner
+        handlePreferencesUpdated={initConsent}
+        handlePreferencesRestored={initConsent}
         btnLabelAcceptAndContinue="Agree and continue"
         btnLabelSelectAllAndContinue="Select all and continue"
         btnLabelOnlyEssentialAndContinue="Continue with technically required cookies only"
