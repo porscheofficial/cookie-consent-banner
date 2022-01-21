@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.1.2...v2.1.3) (2022-01-21)
+
+
+### Bug Fixes
+
+* 🐛 add cursor:pointer to button ([1ba9475](https://github.com/porscheofficial/cookie-consent-banner/commit/1ba94752c7bb59e455722df512816534acf91cb9))
+
 ### [2.1.2](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.1.1...v2.1.2) (2022-01-19)
 
 
