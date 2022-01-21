@@ -281,6 +281,9 @@ p,
   width: 100%;
   margin-bottom: 1rem;
 }
+.cc_buttons > button:hover {
+  cursor: pointer;
+}
 @media (min-width: 48em) {
   .cc_buttons > button {
     width: auto;
