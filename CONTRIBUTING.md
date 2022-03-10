@@ -7,7 +7,7 @@ Thanks for your interest in contributing to the Cookie Consent Banner! :thumbsup
 Found an issue with the component or have an idea how to improve?
 
 1. Check if your issue or idea has already been reported: [See Issues](https://github.com/porscheofficial/cookie-consent-banner/issues)
-2. Create an issue, but don't forget to provide a test case or even a live example: [Create Issue](https://github.com/porscheofficial/cookie-consent-banner-prerelease/issues/new)
+2. Create an issue, but don't forget to provide a test case or even a live example: [Create Issue](https://github.com/porscheofficial/cookie-consent-banner/issues/new)
 
 Make sure to also check the documentation for the specific variants:
 
@@ -18,7 +18,7 @@ Make sure to also check the documentation for the specific variants:
 
 Want to contribute to the project? That's awesome! :tada:
 
-1. Let's start with a [fork of the project](https://github.com/porscheofficial/cookie-consent-banner-prerelease/fork)
+1. Let's start with a [fork of the project](https://github.com/porscheofficial/cookie-consent-banner/fork)
 
 2. Clone your fork:
 
