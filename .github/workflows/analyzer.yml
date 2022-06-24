@@ -14,7 +14,7 @@ jobs:
       - name: Run Analyzer
         run: |
           docker run --rm -v ~/.aws:/root/.aws:ro -e AWS_ACCESS_KEY_ID=${{ secrets.ANALYZER_AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.ANALYZER_AWS_ACCESS_KEY }} amazon/aws-cli ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin ${{ secrets.ANALYZER_DOCKER_REGISTRY }}
-          docker run -v $PWD:/project ${{ secrets.ANALYZER_DOCKER_REGISTRY }}/${{ secrets.ANALYZER_DOCKER_IMAGE }} analyze -i /project/ -o /project/ort/ --package-curations-file /curations/curations.yml
+          docker run -v $PWD:/project ${{ secrets.ANALYZER_DOCKER_REGISTRY }}/${{ secrets.ANALYZER_DOCKER_IMAGE }} analyze -i /project/ -o /project/ort/ --package-curations-file /curations/ort-package-configurations/curations.yml
       - name: Archive results
         uses: actions/upload-artifact@v2
         with:
