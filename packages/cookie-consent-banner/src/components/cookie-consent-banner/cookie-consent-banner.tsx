@@ -36,7 +36,7 @@ export class CookieConsentBanner {
 
   // A cookie banner could have impact on the Web Vitals / LCP measurement
   // See #7
-  @Prop() public disableSlideUpAnimation = false;
+  @Prop() public disableSlideInAnimation = false;
 
   // Add Headline
   @Prop() public headline: string;
@@ -204,7 +204,7 @@ export class CookieConsentBanner {
     }
     return (
       <div
-        class={this.disableSlideUpAnimation ? "cc cc_disable-slide-up" : "cc"}
+        class={this.disableSlideInAnimation ? "cc cc_disable-slide-in" : "cc"}
       >
         <div
           class="cc_body"

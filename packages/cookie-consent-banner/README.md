@@ -55,6 +55,7 @@ npm i @porscheofficial/cookie-consent-banner --S
 | `cookie-domain`                                   | `document.location.hostname`    | `string`         |                                                                                  |
 | `cookie-name`                                     | `"cookies_accepted_categories"` | `string`         |                                                                                  |
 | `disable-reset-site-cookies-on-consent-withdrawn` | `false`                         | `boolean`        | Prevent cookies from being deleted automatically if consent of the user changed. |
+| `disable-slide-in-animation`                      | `false`                         | `boolean`        | Disable slide-in animation of banner (See #7)                                    |
 | `headline`                                        | `undefined`                     | `string`         |                                                                                  |
 | `btn-label-accept-and-continue`                   | `undefined`                     | `string`         |                                                                                  |
 | `btn-label-select-all-and-continue`               | `undefined`                     | `string`         |                                                                                  |

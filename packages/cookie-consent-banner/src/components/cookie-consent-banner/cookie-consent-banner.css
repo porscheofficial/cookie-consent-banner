@@ -210,7 +210,7 @@
   transform: translateY(110vh);
   animation: slideup 1s forwards;
 }
-.cc_disable-slide-up {
+.cc_disable-slide-in {
   transform: none;
   animation: none;
 }
