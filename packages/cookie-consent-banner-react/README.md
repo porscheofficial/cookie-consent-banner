@@ -81,6 +81,35 @@ In order to allow the user to always update its preferences it's possible to tri
 </a>
 ```
 
+### Convenience Functions
+
+#### React Hook `useCookieConsent`
+
+Subscribe to changes of the consent.
+
+```ts
+import { useCookieConsent } from "@porscheofficial/cookie-consent-banner-react";
+
+export const SomePage: React.FC = () => {
+  const acceptedCategories = useCookieConsent();
+  //...
+};
+```
+
+#### `triggerCookieConsentBanner`
+
+Easily show the cookie consent banner.
+
+```ts
+import { triggerCookieConsentBanner } from "@porscheofficial/cookie-consent-banner-react";
+
+// Only the banner
+triggerCookieConsentBanner();
+
+// Also show the details
+triggerCookieConsentBanner({ showDetails: true });
+```
+
 ### Styling
 
 The appearance of the component can be influenced by updating the available CSS Properties.
@@ -134,7 +163,10 @@ Once the visitor stores the consent settings, two things happen: The consent dat
 Have a look on the main repository for an [example consent flow](https://github.com/porscheofficial/cookie-consent-banner#arrows_counterclockwise-consent-flow).
 
 ```jsx
-import { CookieConsentBanner } from "@porscheofficial/cookie-consent-banner-react";
+import {
+  CookieConsentBanner,
+  triggerCookieConsentBanner,
+} from "@porscheofficial/cookie-consent-banner-react";
 
 const initConsent = ({ acceptedCategories }) => {
   // -------------------------------------------------------------------------
@@ -199,20 +231,15 @@ const Root = ({ children }) => {
         interests. Depending on their purpose, analysis and marketing cookies
         may be used in addition to technically necessary cookies. By clicking on
         &quot;Agree and continue&quot;, you declare your consent to the use of
-        the aforementioned cookies.{" "}
+        the aforementioned cookies.
         <button
-          onClick={() =>
-            document.dispatchEvent(new Event("cookie_consent_details_show"))
-          }
-          onKeyPress={() =>
-            document.dispatchEvent(new Event("cookie_consent_details_show"))
-          }
+          onClick={triggerCookieConsentBanner}
+          onKeyPress={triggerCookieConsentBanner}
           type="button"
         >
           Here
-        </button>{" "}
-        you can make detailed settings or revoke your consent (in part if
-        necessary) with effect for the future. For further information, please
+        </button> you can make detailed settings or revoke your consent (in part
+        if necessary) with effect for the future. For further information, please
         refer to our
         <a href="/privacy-policy">Privacy Policy</a>.
       </CookieConsentBanner>

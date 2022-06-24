@@ -40,3 +40,13 @@ export function useCookieConsent(): string[] {
 
   return acceptedCategories;
 }
+
+export function triggerCookieConsentBanner(options?: {
+  showDetails: boolean;
+}): void {
+  if (options?.showDetails) {
+    document.dispatchEvent(new Event("cookie_consent_details_show"));
+  } else {
+    document.dispatchEvent(new Event("cookie_consent_show"));
+  }
+}
