@@ -171,6 +171,16 @@
   box-sizing: border-box;
 }
 
+@keyframes slideup {
+  0% {
+    transform: translateY(110vh);
+  }
+  100% {
+    transform: translateY(0vh);
+  }
+}
+
+
 .cc {
   position: fixed;
   left: 0;
@@ -196,6 +206,13 @@
       env(safe-area-inset-right)
   );
   overflow-y: auto;
+  /* Prevent influence on Web Vitals / LCP */
+  transform: translateY(110vh);
+  animation: slideup 1s forwards;
+}
+.cc_disable-slide-up {
+  transform: none;
+  animation: none;
 }
 .cc_body {
   background-color: var(

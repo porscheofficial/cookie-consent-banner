@@ -34,6 +34,10 @@ export class CookieConsentBanner {
   // Site Cookies will be deleted if consent for any category is withdrawn. Set to true to disable behaviour.
   @Prop() public disableResetSiteCookiesOnConsentWithdrawn = false;
 
+  // A cookie banner could have impact on the Web Vitals / LCP measurement
+  // See #7
+  @Prop() public disableSlideUpAnimation = false;
+
   // Add Headline
   @Prop() public headline: string;
 
@@ -199,7 +203,9 @@ export class CookieConsentBanner {
       return null;
     }
     return (
-      <div class="cc">
+      <div
+        class={this.disableSlideUpAnimation ? "cc cc_disable-slide-up" : "cc"}
+      >
         <div
           class="cc_body"
           role="dialog"
