@@ -234,8 +234,12 @@ const Root = ({ children }) => {
         &quot;Agree and continue&quot;, you declare your consent to the use of
         the aforementioned cookies.
         <button
-          onClick={triggerCookieConsentBanner}
-          onKeyPress={triggerCookieConsentBanner}
+          onClick={() => {
+            triggerCookieConsentBanner({ showDetails: true });
+          }}
+          onKeyPress={() => {
+            triggerCookieConsentBanner({ showDetails: true });
+          }}
           type="button"
         >
           Here
