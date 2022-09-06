@@ -1,7 +1,7 @@
 {
   "name": "@porscheofficial/cookie-consent-banner-react",
   "license": "MIT",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/porscheofficial/cookie-consent-banner",
@@ -38,7 +38,7 @@
     }
   },
   "dependencies": {
-    "@porscheofficial/cookie-consent-banner": "*"
+    "@porscheofficial/cookie-consent-banner": "3.0.1"
   },
   "devDependencies": {
     "@types/react": "18.0.14",
