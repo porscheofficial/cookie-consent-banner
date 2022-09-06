@@ -3,6 +3,11 @@ import { reactOutputTarget } from "@stencil/react-output-target";
 
 export const config: Config = {
   namespace: "cookie-consent-banner",
+  extras: {
+    // Fix issues with Vite based host projects
+    // https://stenciljs.com/docs/config-extras#experimentalimportinjection
+    experimentalImportInjection: true,
+  },
   outputTargets: [
     {
       type: "dist",
