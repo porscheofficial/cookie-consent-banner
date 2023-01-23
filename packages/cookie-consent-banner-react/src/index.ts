@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-// @ts-expect-error will be there after build
-// eslint-disable-next-line import/extensions,import/no-unresolved
 export * from "./stencilproxy/components";
 
 const isCustomEvent = (

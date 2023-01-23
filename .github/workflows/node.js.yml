@@ -37,6 +37,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install --immutable
-      - run: yarn workspaces foreach -p run test:ci
       - run: yarn workspace @porscheofficial/cookie-consent-banner run build
       - run: yarn workspace @porscheofficial/cookie-consent-banner-react run build
+      - run: yarn workspaces foreach -p run test:ci
