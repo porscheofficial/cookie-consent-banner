@@ -10,8 +10,6 @@ jobs:
   analyzer:
     runs-on: ubuntu-latest
     name: OSO ORT
-    needs:
-      - filter
     steps:
       - uses: actions/checkout@v3
       - name: Run OSO ORT Analyzer and Submit to Scanner API
