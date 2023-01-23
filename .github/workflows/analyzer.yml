@@ -9,14 +9,16 @@ jobs:
   # =============================================================================
   analyzer:
     runs-on: ubuntu-latest
+    name: OSO ORT
+    needs:
+      - filter
     steps:
-      - uses: actions/checkout@v2
-      - name: Run Analyzer
-        run: |
-          docker run --rm -v ~/.aws:/root/.aws:ro -e AWS_ACCESS_KEY_ID=${{ secrets.ANALYZER_AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.ANALYZER_AWS_ACCESS_KEY }} amazon/aws-cli ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin ${{ secrets.ANALYZER_DOCKER_REGISTRY }}
-          docker run -v $PWD:/project ${{ secrets.ANALYZER_DOCKER_REGISTRY }}/${{ secrets.ANALYZER_DOCKER_IMAGE }} analyze -i /project/ -o /project/ort/ --package-curations-file /curations/ort-package-configurations/curations.yml
-      - name: Archive results
-        uses: actions/upload-artifact@v2
+      - uses: actions/checkout@v3
+      - name: Run OSO ORT Analyzer and Submit to Scanner API
+        id: analyzer
+        uses: ./.github/actions/oso-ort
         with:
-          name: ort-results
-          path: ort
+          ort-aws-access-key-id: ${{ secrets.ANALYZER_AWS_ACCESS_KEY_ID }}
+          ort-aws-secret-access-key: ${{ secrets.ANALYZER_AWS_ACCESS_KEY }}
+          container-repository: ${{ secrets.ANALYZER_DOCKER_IMAGE }}
+          container-registry: ${{ secrets.ANALYZER_DOCKER_REGISTRY }}

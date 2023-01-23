@@ -1,4 +1,8 @@
 fileignoreconfig:
+- filename: .github/oso-ort/action.yml
+  checksum: 31bb03e139d5768cd564fd05f8fe7b8f6e02f77558b03ea90194833974732292
+- filename: .github/workflows/analyzer.yml
+  checksum: c1e4bdee1133e4826bd4b6b5bd4f876238045518cc5947c54ab8650fb82561a9
 - filename: yarn.lock
   checksum: f9d756ba58973c8764575817e9ead3a1f6190d67baec2fc151513d8d5c097e08
 version: "1.0"

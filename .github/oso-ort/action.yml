@@ -1,0 +1,78 @@
+# For documentation about OSS Review Toolkit see https://github.com/oss-review-toolkit/ort
+# Based on: https://github.com/porscheofficial/oss-review-toolkit-action/blob/v1/action.yml
+
+name: 'OSO OSS Review Toolkit'
+description: >
+  A Github Action for the OSS Review Toolkit (https://github.com/oss-review-toolkit/ort).
+
+  The following reports are generated
+  - ort/analyzer-result.yml
+
+inputs:
+  ort-aws-access-key-id:
+    description: AWS access key id for the AWS ECR where the ORT container is located
+    required: true
+  ort-aws-secret-access-key:
+    description: AWS access key for the AWS ECR where the ORT container is located
+    required: true
+  project-dir:
+    description: Directory where the source code is located and the reports are saved in the `ort` subfolder
+    required: false
+    default: $GITHUB_WORKSPACE/
+  container-registry:
+    description: Registry for ORT docker container
+    required: true
+  container-repository:
+    description: Repository for ORT docker container
+    required: true
+  container-image-tag:
+    description: Image tag for ORT docker container
+    required: false
+    default: latest
+runs:
+  using: composite
+  steps:
+    # Configure AWS credentials
+    - uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ inputs.ort-aws-access-key-id }}
+        aws-secret-access-key: ${{ inputs.ort-aws-secret-access-key }}
+        aws-region: eu-central-1
+
+    # Login to ORT Amazon ECR
+    - uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Pull OSO ORT Image
+      shell: bash
+      run: |
+        # Pull OSS Review Toolkit container
+        echo "::group::Pull OSS Review Toolkit container"
+        docker pull ${{ inputs.container-registry }}/${{ inputs.container-repository }}:${{ inputs.container-image-tag }}
+        docker run ${{ inputs.container-registry }}/${{ inputs.container-repository }}:${{ inputs.container-image-tag }} --version
+        echo "::endgroup::"
+
+    # https://github.com/oss-review-toolkit/ort#analyzer
+    - name: ORT Analyzer
+      shell: bash
+      run: |
+        # Analyze repository
+        echo "::group::Analyze repository"
+        docker run \
+          --volume ${{ inputs.project-dir }}:/project \
+          ${{ inputs.container-registry }}/${{ inputs.container-repository }}:${{ inputs.container-image-tag }} \
+          analyze \
+          --input-dir /project/ \
+          --output-dir /project/ort/ \
+          --package-curations-file /curations/ort-package-configurations/curations.yml || ERROR_CODE=`echo $?`
+        if [ $ERROR_CODE -eq 1 ]
+        then
+          echo "ORT crashed"
+          exit 1
+        fi
+        echo "::endgroup::"
+
+    # Archive ORT YAML result
+    - uses: actions/upload-artifact@v3
+      with:
+        name: OSS Review Toolkit result (YAML)
+        path: ort/analyzer-result.yml
