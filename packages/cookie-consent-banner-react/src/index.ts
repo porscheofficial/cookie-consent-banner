@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
+
 export * from "./stencilproxy/components";
 
-function isCustomEvent(event: Event): event is CustomEvent<{
+const isCustomEvent = (
+  event: Event
+): event is CustomEvent<{
   acceptedCategories: string[];
-}> {
-  return "detail" in event;
-}
+}> => {
+  if (!Object.hasOwn(event, "detail")) return false;
+  const { detail } = event as unknown as { detail: Record<string, unknown> };
 
-export function useCookieConsent(): string[] {
+  if (!Object.hasOwn(detail, "acceptedCategories")) return false;
+  return Array.isArray(detail.acceptedCategories);
+};
+
+export const useCookieConsent = (): string[] => {
   const [acceptedCategories, setAcceptedCategories] = useState<string[]>([]);
 
   const acceptedCategoriesListener: EventListener = (event) => {
     if (isCustomEvent(event)) {
-      setAcceptedCategories(event.detail.acceptedCategories ?? []);
+      setAcceptedCategories(event.detail.acceptedCategories);
     }
   };
 
@@ -39,14 +46,14 @@ export function useCookieConsent(): string[] {
   }, []);
 
   return acceptedCategories;
-}
+};
 
-export function triggerCookieConsentBanner(options?: {
+export const triggerCookieConsentBanner = (options?: {
   showDetails: boolean;
-}): void {
+}): void => {
   if (options?.showDetails) {
     document.dispatchEvent(new Event("cookie_consent_details_show"));
   } else {
     document.dispatchEvent(new Event("cookie_consent_show"));
   }
-}
+};

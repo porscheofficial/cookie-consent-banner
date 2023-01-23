@@ -7,6 +7,7 @@
     "useDefineForClassFields": false,        /* Fix stencil bug: https://github.com/ionic-team/stencil/issues/3130 */
     /* Module Resolution Options */
     "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "strictNullChecks": true
   },
   "include": [
     "src",

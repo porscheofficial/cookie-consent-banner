@@ -9,14 +9,16 @@
   },
   "scripts": {
     "build": "stencil build",
-    "eslint:ci": "eslint ./src/ --ext .js,.jsx,.tsx,.ts",
-    "eslint:fix": "eslint ./src/ --fix --ext .js,.jsx,.tsx,.ts",
+    "eslint:ci": "eslint src/ --ext .js,.jsx,.tsx,.ts -f stylish",
+    "eslint:fix": "eslint src/ --fix --ext .js,.jsx,.tsx,.ts  -f stylish --quiet",
+    "prettier:ci": "prettier --check ./src/",
+    "prettier:fix": "prettier --write ./src/",
     "start": "stencil build --dev --watch --serve",
     "generate": "stencil generate",
     "release:prepare": "standard-version",
     "test": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
-    "test:ci": "yarn eslint:ci && stencil test --spec --passWithNoTests"
+    "test:ci": "yarn prettier:ci && yarn eslint:ci && stencil test --spec --passWithNoTests"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -42,16 +44,20 @@
     }
   },
   "dependencies": {
-    "@stencil/core": "2.17.0"
+    "@stencil/core": "2.22.1"
   },
   "devDependencies": {
-    "@stencil/react-output-target": "0.3.1",
-    "@types/jest": "27.0.3",
-    "@types/puppeteer": "5.4.6",
-    "eslint": "8.18.0",
-    "jest": "27.0.3",
-    "jest-cli": "27.0.3",
-    "puppeteer": "15.0.0",
-    "standard-version": "9.5.0"
+    "@porscheofficial/eslint-config-porschedigital-react": "2.3.0",
+    "@porscheofficial/prettier-config-porschedigital": "2.3.0",
+    "@stencil/react-output-target": "0.4.0",
+    "@types/jest": "27.5.2",
+    "@types/puppeteer": "5.4.7",
+    "eslint": "8",
+    "jest": "27.5.1",
+    "jest-cli": "27.5.1",
+    "prettier": "2.8.3",
+    "puppeteer": "15.5.0",
+    "standard-version": "9.5.0",
+    "typescript": "4.9.4"
   }
 }

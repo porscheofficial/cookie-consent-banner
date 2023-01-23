@@ -124,11 +124,11 @@ export class CookieConsentBanner {
     const defaultCookies = this.availableCategories
       .filter((category) => category.isMandatory)
       .map((category) => category.key);
-    const cookieValueString = `; ${document.cookie}`
-      .split(`; ${this.cookieName}=`)
-      .pop()
-      .split(";")
-      .shift();
+
+    const cookieValueString =
+      `; ${document.cookie}`.split(`; ${this.cookieName}=`).pop() ??
+      "".split(";").shift();
+
     const cookieValues = cookieValueString ? cookieValueString.split(",") : [];
 
     if (cookieValues.length === 0) {
@@ -142,6 +142,7 @@ export class CookieConsentBanner {
       this.eventCookieConsentRestored.emit({
         acceptedCategories: cookieValues,
       });
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (this.handlePreferencesRestored) {
         this.handlePreferencesRestored({
           acceptedCategories: cookieValues,
@@ -172,6 +173,7 @@ export class CookieConsentBanner {
     this.eventCookieConsentUpdated.emit({
       acceptedCategories: this.acceptedCategoriesPersisted,
     });
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (this.handlePreferencesUpdated) {
       this.handlePreferencesUpdated({
         acceptedCategories: this.acceptedCategoriesPersisted,
@@ -197,8 +199,7 @@ export class CookieConsentBanner {
     this.persistSelection();
   }
 
-  /* eslint-disable-next-line @typescript-eslint/explicit-member-accessibility,@typescript-eslint/member-ordering */
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     if (!this.isShown) {
       return null;
     }
@@ -226,42 +227,40 @@ export class CookieConsentBanner {
                   {this.contentSettingsDescription}
                 </p>
                 <div class="cc_checkboxes">
-                  {this.availableCategories.map((category) => {
-                    return (
-                      <label
-                        class="cc_checkboxes_item"
-                        htmlFor={`check-category-${category.label}`}
-                      >
-                        <input
-                          id={`check-category-${category.label}`}
-                          type="checkbox"
-                          disabled={category?.isMandatory ?? false}
-                          checked={this.acceptedCategoriesNext.includes(
-                            category.key
-                          )}
-                          onChange={(event): void => {
-                            const isChecked = (
-                              event?.currentTarget as HTMLInputElement
-                            )?.checked;
-                            if (isChecked) {
-                              this.acceptedCategoriesNext = [
-                                ...this.acceptedCategoriesNext,
-                                category.key,
-                              ];
-                            } else {
-                              this.acceptedCategoriesNext =
-                                this.acceptedCategoriesNext.filter(
-                                  (item) => item !== category.key
-                                );
-                            }
-                          }}
-                        />{" "}
-                        {category.label}
-                        {": "}
-                        {category.description}
-                      </label>
-                    );
-                  })}
+                  {this.availableCategories.map((category) => (
+                    <label
+                      class="cc_checkboxes_item"
+                      htmlFor={`check-category-${category.label}`}
+                    >
+                      <input
+                        id={`check-category-${category.label}`}
+                        type="checkbox"
+                        disabled={category.isMandatory ?? false}
+                        checked={this.acceptedCategoriesNext.includes(
+                          category.key
+                        )}
+                        onChange={(event): void => {
+                          const isChecked = (
+                            event.currentTarget as HTMLInputElement
+                          ).checked;
+                          if (isChecked) {
+                            this.acceptedCategoriesNext = [
+                              ...this.acceptedCategoriesNext,
+                              category.key,
+                            ];
+                          } else {
+                            this.acceptedCategoriesNext =
+                              this.acceptedCategoriesNext.filter(
+                                (item) => item !== category.key
+                              );
+                          }
+                        }}
+                      />{" "}
+                      {category.label}
+                      {": "}
+                      {category.description}
+                    </label>
+                  ))}
                 </div>
               </div>
             )}
