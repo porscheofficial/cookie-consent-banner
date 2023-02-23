@@ -2,38 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [3.0.1](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.0.0...v3.0.1) (2022-09-06)
+### [3.1.0](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.0.1...v3.0.2) (2023-02-23)
 
+- upgrade dependencies
+
+### [3.0.1](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.0.0...v3.0.1) (2022-09-06)
 
 ### Bug Fixes
 
-* better support vite (fixes [#9](https://github.com/porscheofficial/cookie-consent-banner/issues/9)) ([a784314](https://github.com/porscheofficial/cookie-consent-banner/commit/a7843149dc27c769b589771246f177148fa2f626))
+- better support vite (fixes [#9](https://github.com/porscheofficial/cookie-consent-banner/issues/9)) ([a784314](https://github.com/porscheofficial/cookie-consent-banner/commit/a7843149dc27c769b589771246f177148fa2f626))
 
 ## [3.0.0](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.1.3...v3.0.0) (2022-07-18)
 
-
 ### ⚠ BREAKING CHANGES
 
-* 🧨 Cookie Banner wont be shown immediately to prevent impact on LCP
+- 🧨 Cookie Banner wont be shown immediately to prevent impact on LCP
 
 ### Features
 
-* 🎸 add convenience function triggerCookieConsentBanner ([bc5b7f0](https://github.com/porscheofficial/cookie-consent-banner/commit/bc5b7f06f0df7f537b9c7180bd0e82e03dfb74b9))
-* 🎸 slideup banner after init to prevent issues with LCP ([460f833](https://github.com/porscheofficial/cookie-consent-banner/commit/460f833b76f2ce1b116301cbbb226cf9f318ff42)), closes [#7](https://github.com/porscheofficial/cookie-consent-banner/issues/7)
+- 🎸 add convenience function triggerCookieConsentBanner ([bc5b7f0](https://github.com/porscheofficial/cookie-consent-banner/commit/bc5b7f06f0df7f537b9c7180bd0e82e03dfb74b9))
+- 🎸 slideup banner after init to prevent issues with LCP ([460f833](https://github.com/porscheofficial/cookie-consent-banner/commit/460f833b76f2ce1b116301cbbb226cf9f318ff42)), closes [#7](https://github.com/porscheofficial/cookie-consent-banner/issues/7)
 
 ### [2.1.3](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.1.2...v2.1.3) (2022-01-21)
 
-
 ### Bug Fixes
 
-* 🐛 add cursor:pointer to button ([1ba9475](https://github.com/porscheofficial/cookie-consent-banner/commit/1ba94752c7bb59e455722df512816534acf91cb9))
+- 🐛 add cursor:pointer to button ([1ba9475](https://github.com/porscheofficial/cookie-consent-banner/commit/1ba94752c7bb59e455722df512816534acf91cb9))
 
 ### [2.1.2](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.1.1...v2.1.2) (2022-01-19)
 
-
 ### Bug Fixes
 
-* 🐛 include src on distributed packages ([fce65ac](https://github.com/porscheofficial/cookie-consent-banner/commit/fce65ac9d20d1665bafdc982dfd905ecabd8d9ae))
+- 🐛 include src on distributed packages ([fce65ac](https://github.com/porscheofficial/cookie-consent-banner/commit/fce65ac9d20d1665bafdc982dfd905ecabd8d9ae))
 
 ### [2.1.1](https://github.com/porscheofficial/cookie-consent-banner/compare/v2.1.0...v2.1.1) (2022-01-17)
 
