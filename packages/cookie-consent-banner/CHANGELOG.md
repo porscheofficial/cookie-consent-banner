@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.1...v3.1.2) (2023-03-15)
+
+
+### Bug Fixes
+
+* correctly identify empty cookie value | fix [#12](https://github.com/porscheofficial/cookie-consent-banner/issues/12) ([c3c3a66](https://github.com/porscheofficial/cookie-consent-banner/commit/c3c3a661fea8f865fe48088ccb127af80a85b446)) – thanks @diesieben07!
+
 ### [3.1.1](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.0.1...v3.1.1) (2023-02-23)
 
 - upgrade dependencies
