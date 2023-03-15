@@ -125,11 +125,14 @@ export class CookieConsentBanner {
       .filter((category) => category.isMandatory)
       .map((category) => category.key);
 
-    const cookieValueString =
-      `; ${document.cookie}`.split(`; ${this.cookieName}=`).pop() ??
-      "".split(";").shift();
+    let cookieValues: string[] = [];
 
-    const cookieValues = cookieValueString ? cookieValueString.split(",") : [];
+    if (document.cookie) {
+      const cookieValueString =
+        `; ${document.cookie}`.split(`; ${this.cookieName}=`).pop() ??
+        "".split(";").shift();
+      cookieValues = cookieValueString ? cookieValueString.split(",") : [];
+    }
 
     if (cookieValues.length === 0) {
       this.isShown = true;
