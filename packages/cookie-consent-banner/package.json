@@ -48,7 +48,6 @@
   },
   "devDependencies": {
     "@porscheofficial/eslint-config-porschedigital-react": "2.3.0",
-    "@porscheofficial/prettier-config-porschedigital": "2.3.0",
     "@stencil/react-output-target": "0.4.0",
     "@types/jest": "27.5.2",
     "@types/puppeteer": "5.4.7",
