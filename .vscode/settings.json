@@ -33,6 +33,7 @@
 		"editor.formatOnSave": false
 	},
 	"editor.formatOnType": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
