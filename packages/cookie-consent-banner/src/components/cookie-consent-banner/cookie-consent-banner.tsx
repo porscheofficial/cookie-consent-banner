@@ -11,6 +11,7 @@ import {
   JSX,
 } from "@stencil/core";
 import { CategoryItem } from "./types";
+import { getCookie } from "../../utils/parseCookies";
 
 @Component({
   tag: "cookie-consent-banner",
@@ -128,9 +129,7 @@ export class CookieConsentBanner {
     let cookieValues: string[] = [];
 
     if (document.cookie) {
-      const cookieValueString =
-        `; ${document.cookie}`.split(`; ${this.cookieName}=`).pop() ??
-        "".split(";").shift();
+      const cookieValueString = getCookie(this.cookieName);
       cookieValues = cookieValueString ? cookieValueString.split(",") : [];
     }
 
