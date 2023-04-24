@@ -18,7 +18,7 @@
     "release:prepare": "standard-version",
     "test": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
-    "test:ci": "yarn prettier:ci && yarn eslint:ci && stencil test --spec --passWithNoTests"
+    "test:ci": "yarn prettier:ci && yarn eslint:ci && stencil test --spec --e2e --passWithNoTests"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
