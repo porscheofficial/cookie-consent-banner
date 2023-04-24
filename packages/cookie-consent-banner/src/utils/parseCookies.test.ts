@@ -19,7 +19,8 @@ describe("parseCookies", () => {
   });
 
   it("should work with multiple cookies", () => {
-    const cookieStringSingle = "first=someValue;second=someValue;third=someValue";
+    const cookieStringSingle =
+      "first=someValue;second=someValue;third=someValue";
     const expectedParsed: CookieMap = {
       first: "someValue",
       second: "someValue",
@@ -93,7 +94,8 @@ describe("parseCookies", () => {
   });
 
   it("should trim leading and trailing tabs", () => {
-    const cookieStringLeadingAndTrailingTabs = "\tfirst=someValue\t;second=someValue";
+    const cookieStringLeadingAndTrailingTabs =
+      "\tfirst=someValue\t;second=someValue";
     const expectedParsed: CookieMap = {
       first: "someValue",
       second: "someValue",
