@@ -12,4 +12,4 @@ export const parseCookies = (): CookieMap =>
       return { ...acc, [cookieKey]: cookieValue };
     }, {});
 
-export const getCookie = (cookieName: string): string | undefined => parseCookies()[cookieName];
+export const getCookie = (cookieName: string): string | undefined => parseCookies()[cookieName];
