@@ -1,6 +1,6 @@
 import { parseCookies, CookieMap } from "./parseCookies";
 
-const mockDocumentCookie = (cookieString: string) =>
+const mockDocumentCookie = (cookieString: string): Document =>
   Object.defineProperty(window.document, "cookie", {
     writable: true,
     value: cookieString,
