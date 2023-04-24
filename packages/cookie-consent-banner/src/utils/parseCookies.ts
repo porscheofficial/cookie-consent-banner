@@ -1,7 +1,9 @@
-export const parseCookies = () =>
+export type CookieMap = Record<string, string | undefined>
+
+export const parseCookies = (): CookieMap =>
   document.cookie
     .split(";")
-    .reduce<Record<string, string | undefined>>((acc, curr) => {
+    .reduce<CookieMap>((acc, curr) => {
       const [key, value] = curr.split("=");
 
       // key and value may be surrounded by whitespace (space and tab characters)
@@ -10,4 +12,4 @@ export const parseCookies = () =>
       return { ...acc, [cookieKey]: cookieValue };
     }, {});
 
-export const getCookie = (cookieName: string) => parseCookies()[cookieName];
+export const getCookie = (cookieName: string): string | undefined => parseCookies()[cookieName];
