@@ -27,21 +27,11 @@ const cookieBannerFullyConfigured = `
 </cookie-consent-banner>
 `;
 
-const clearCookies = async (page: E2EPage): Promise<void> => {
-  const cookies = (await page.cookies()).map(({ name }) => {
-    return {
-      name,
-    };
-  });
-  await Promise.allSettled(cookies.map(async (cookie) => page.deleteCookie(cookie)));
-};
-
 describe("Cookie Consent Banner", () => {
   let page: E2EPage;
 
   beforeEach(async () => {
     page = await newE2EPage();
-    await clearCookies(page);
   });
 
   it("should render", async () => {
@@ -67,7 +57,7 @@ describe("Cookie Consent Banner", () => {
     await page.setCookie({
       name: "someUnrelatedCookie",
       value: "someValue",
-      domain: ".www.porsche.digital",
+      domain: "localhost",
     });
     const cookieBannerInnerDiv = await page.find(
       "cookie-consent-banner >>> .cc"
@@ -81,7 +71,7 @@ describe("Cookie Consent Banner", () => {
     await page.setCookie({
       name: "cookies_accepted_categories",
       value: "technically_required,analytics",
-      domain: ".www.porsche.digital",
+      domain: "localhost",
     });
     await page.setContent(cookieBannerFullyConfigured);
     const cookieBannerInnerDiv = await page.find(
@@ -96,13 +86,13 @@ describe("Cookie Consent Banner", () => {
     await page.setCookie({
       name: "cookies_accepted_categories",
       value: "technically_required,analytics",
-      domain: ".www.porsche.digital",
+      domain: "localhost",
     });
 
     await page.setCookie({
       name: "someUnrelatedCookie",
       value: "someValue",
-      domain: ".www.porsche.digital",
+      domain: "localhost",
     });
     await page.setContent(cookieBannerFullyConfigured);
     const cookieBannerInnerDiv = await page.find(
