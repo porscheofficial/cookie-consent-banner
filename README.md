@@ -19,7 +19,7 @@ For that, some kind of component might help which provides a sleek, but customiz
 That's where the Cookie Consent Banner comes in.
 
 In order to focus on the things that really matter, the Cookie Consent Banner supports us to fulfill that requirement.
-It visualizes the available categories, like `technically required` and `analysis`, stores the decision of the user and provides an event-based API for you to handle appropriately. And of course, the consent data is stored locally in the vistors browser.
+It visualizes the available categories, like `technically required` and `analysis`, stores the decision of the user and provides an event-based API for you to handle appropriately. And of course, the consent data is stored locally in the vistor's browser.
 
 ![](./assets/example.png)
 
@@ -33,14 +33,14 @@ It visualizes the available categories, like `technically required` and `analysi
 
 ## :arrows_counterclockwise: Consent Flow
 
-The consent banner has two tasks: Provide an UI Component with which visitors of your web application can choose which cookies they want to accept and to provide you an API to react on the choosen settings.
+The consent banner has two tasks: Providing a UI Component to allow visitors of your web application to choose which cookies they want to accept, and the ability to react on the choosen settings via an API.
 
-There are two typical scenarios. Either the external scripts, which set cookies are managed through a tag manager of your choice using the consent data, or the scripts are loaded or configured directly on code level.
+There are two typical scenarios: Either the external scripts, which set cookies are managed through a tag manager of your choice using the consent data, or the scripts are loaded or configured directly on code level.
 
 ### Using a Tag Manager
 
-The flow could look like this. Every script that sets cookies which require a consent from the visitor is blocked by default.
-Instead, the Consent Banner is shown. Once the visitor updates it's preferences an event is triggered (`cookie_consent_preferences_updated`).
+The flow could look like this: Every script that sets cookies which require a consent from the visitor is blocked by default.
+Instead, the Consent Banner is shown. Once the visitor updates its preferences an event is triggered (`cookie_consent_preferences_updated`).
 Additionally the consent data is stored within a cookie in a format that can be parsed either programmatically or with a tag manager (e.g.: name: `cookies_accepted_categories`, value: `technically_required,analytics,marketing`). A tag manager could read the value of that `1st-Party Cookie` before any other script (tag) is loaded (e.g.: Fire trigger only `if Accepted Cookie Categories contains marketing`).
 
 ![](./assets/consentFlow.svg)
@@ -51,9 +51,9 @@ Have a look on the Real World example using the React Component: [`packages/cook
 
 ## :spiral_notepad: Documentation
 
-The Cookie Consent Banner supports multiple frontend frameworks, because it is build as an agnostic web component.
+The Cookie Consent Banner supports multiple frontend frameworks, because it is built as an agnostic web component.
 For easier integration we also provide a wrapper component for React environments.
-It's necessary to set at least the required properties for the component to work properly (see the provided examples).
+It's necessary to set at least the required properties for the component in order to work properly (see the provided examples).
 
 ### Web Component – Vanilla JS
 

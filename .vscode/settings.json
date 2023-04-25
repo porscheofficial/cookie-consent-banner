@@ -5,7 +5,8 @@
 			".jsx",
 			".html",
 			".ts",
-			".tsx"
+			".tsx",
+			".test.ts"
 		]
 	},
 	"eslint.validate": [
@@ -15,6 +16,10 @@
 		"typescriptreact",
 		"html"
 	],
+	"eslint.workingDirectories": [
+    "packages/cookie-consent-banner-react",
+    "packages/cookie-consent-banner",
+  ],
 	"editor.formatOnSave": true,
 	"[javascript]": {
 		"editor.formatOnSave": false
@@ -29,6 +34,7 @@
 		"editor.formatOnSave": false
 	},
 	"editor.formatOnType": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true

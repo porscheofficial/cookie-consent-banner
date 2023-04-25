@@ -18,7 +18,7 @@
     "release:prepare": "standard-version",
     "test": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
-    "test:ci": "yarn prettier:ci && yarn eslint:ci && stencil test --spec --passWithNoTests"
+    "test:ci": "yarn prettier:ci && yarn eslint:ci && stencil test --spec --e2e --passWithNoTests"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -48,11 +48,11 @@
   },
   "devDependencies": {
     "@porscheofficial/eslint-config-porschedigital-react": "2.3.0",
-    "@porscheofficial/prettier-config-porschedigital": "2.3.0",
     "@stencil/react-output-target": "0.4.0",
     "@types/jest": "27.5.2",
     "@types/puppeteer": "5.4.7",
     "eslint": "8.32.0",
+    "eslint-plugin-html": "7.1.0",
     "jest": "27.5.1",
     "jest-cli": "27.5.1",
     "prettier": "2.8.3",
