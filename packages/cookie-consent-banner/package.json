@@ -35,7 +35,7 @@
     "loader/",
     "README.md",
     "LICENSE.md",
-    "NOTICE.md"
+    "NOTICE.txt"
   ],
   "standard-version": {
     "skip": {

@@ -27,7 +27,7 @@
     "src/",
     "README.md",
     "LICENSE.md",
-    "NOTICE.md"
+    "NOTICE.txt"
   ],
   "peerDependencies": {
     "react": "*",
