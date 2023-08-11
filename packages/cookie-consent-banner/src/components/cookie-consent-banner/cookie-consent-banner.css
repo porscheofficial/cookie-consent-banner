@@ -47,8 +47,11 @@
     var(--theme-ui-colors-primary, #81c784)
   );
   --internal-cookie-consent-banner-colors-primary-border: var(
-   --cookie-consent-banner-colors-primary-border,
-   var(--cookie-consent-banner-colors-primary, var(--theme-ui-colors-primary, #81c784))
+    --cookie-consent-banner-colors-primary-border,
+    var(
+      --cookie-consent-banner-colors-primary,
+      var(--theme-ui-colors-primary, #81c784)
+    )
   );
   --internal-cookie-consent-banner-colors-primary-content: var(
     --cookie-consent-banner-colors-primary-content,
