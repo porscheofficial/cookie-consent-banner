@@ -31,6 +31,28 @@
         --cookie-consent-banner-spacings-container-padding-left: 0;
         --cookie-consent-banner-spacings-container-padding-bottom: 0;
         --cookie-consent-banner-spacings-container-padding-right: 0;
+
+        --cookie-consent-banner-colors-primary: rgb(24, 77, 251);
+        --cookie-consent-banner-colors-primary-border: rgb(24, 77, 251);
+      }
+
+      /* Check if CSS Parts are merged with default styles and CSS variable overrides */
+      cookie-consent-banner::part(primary-button) {
+        text-transform: uppercase;
+      }
+
+      cookie-consent-banner::part(secondary-button) {
+        text-transform: uppercase;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      }
+
+      cookie-consent-banner::part(checkbox) {
+        accent-color: rgb(24, 251, 107);
+      }
+
+      cookie-consent-banner::part(description),
+      cookie-consent-banner::part(headline) {
+        font-family: "Arial", sans-serif;
       }
     </style>
   </head>
@@ -77,6 +99,13 @@
             "Enable us to determine how visitors interact with our service in order to improve the user experience.",
           key: "analytics",
           label: "Analysis cookies",
+        },
+        {
+          description:
+            "These Cookies are required for the page to work properly and won't track you",
+          key: "technically-required",
+          label: "Technically required",
+          isMandatory: true,
         },
       ];
     </script>

@@ -91,7 +91,11 @@ In order to allow the user to always update its preferences it's possible to tri
 
 ### Styling
 
-The appearance of the component can be influenced by updating the availabe CSS Properties.
+Styling can be done in two different ways: Either via the availabe CSS Properties or via the [CSS `::part` pseudo-element](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
+
+#### Styling with CSS Properties
+
+The appearance of the component can be influenced by updating the availabe CSS Properties. In most cases this is enough customization flexibility but since not every aspect is exposed, you might want to use the [`::part` selectors](#styling-with-the-part-selectors) if you need more flexibility.
 
 ```html
 <style>
@@ -129,6 +133,38 @@ The appearance of the component can be influenced by updating the availabe CSS P
     --cookie-consent-banner-font-size-headline: 1.5rem;
     --cookie-consent-banner-font-family-body: inherit;
     --cookie-consent-banner-font-size-body: 0.875rem;
+  }
+</style>
+```
+
+#### Styling with the `::part` selectors
+
+For full control over the styles we provide you these CSS parts to customize completely by your own:
+
+1. `cookie-consent-banner::part(primary-button)` for styling the primary button
+2. `cookie-consent-banner::part(secondary-button)` for styling the secondary button
+3. `cookie-consent-banner::part(checkbox)` for styling the checkboxes
+4. `cookie-consent-banner::part(description)` for styling the description texts
+5. `cookie-consent-banner::part(headline)` for styling the headline
+
+```html
+<style>
+  cookie-consent-banner::part(primary-button) {
+    text-transform: uppercase;
+  }
+
+  cookie-consent-banner::part(secondary-button) {
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  }
+
+  cookie-consent-banner::part(checkbox) {
+    accent-color: rgb(24, 251, 107);
+  }
+
+  cookie-consent-banner::part(description),
+  cookie-consent-banner::part(headline) {
+    font-family: "Arial", sans-serif;
   }
 </style>
 ```
