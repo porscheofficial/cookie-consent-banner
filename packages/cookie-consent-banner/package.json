@@ -44,11 +44,11 @@
     }
   },
   "dependencies": {
-    "@stencil/core": "2.22.1"
+    "@stencil/core": "4.2.1"
   },
   "devDependencies": {
     "@porscheofficial/eslint-config-porschedigital-react": "2.3.0",
-    "@stencil/react-output-target": "0.4.0",
+    "@stencil/react-output-target": "0.5.3",
     "@types/jest": "27.5.2",
     "@types/puppeteer": "5.4.7",
     "eslint": "8.32.0",

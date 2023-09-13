@@ -819,8 +819,8 @@ __metadata:
   resolution: "@porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner"
   dependencies:
     "@porscheofficial/eslint-config-porschedigital-react": 2.3.0
-    "@stencil/core": 2.22.1
-    "@stencil/react-output-target": 0.4.0
+    "@stencil/core": 4.2.1
+    "@stencil/react-output-target": 0.5.3
     "@types/jest": 27.5.2
     "@types/puppeteer": 5.4.7
     eslint: 8.32.0
@@ -903,21 +903,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:2.22.1":
-  version: 2.22.1
-  resolution: "@stencil/core@npm:2.22.1"
+"@stencil/core@npm:4.2.1":
+  version: 4.2.1
+  resolution: "@stencil/core@npm:4.2.1"
   bin:
     stencil: bin/stencil
-  checksum: 039ae1d48d4dae1ae4775f1c9a754da7ec613b3ad569f4b2eb0a0898fed8f8498dffdc021fd5ec89cce990bb11743b4d07db43feae0aed53ff39e9378fe9058b
+  checksum: 82dfcea4134b5d3b57d0afa98370995f4b1855bc660ce753a945fc73df05d91887a95da3c7d4b156944ac98223a2d8877cf82d14c70d7583810461658b8beab2
   languageName: node
   linkType: hard
 
-"@stencil/react-output-target@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@stencil/react-output-target@npm:0.4.0"
+"@stencil/react-output-target@npm:0.5.3":
+  version: 0.5.3
+  resolution: "@stencil/react-output-target@npm:0.5.3"
   peerDependencies:
-    "@stencil/core": ^2.9.0 || ^3.0.0-beta.0
-  checksum: a88a53f4d8f41c0b0a665f59dddd88986be095b6ed3d9fbbab30f5376cd1247c7d04711fe6ac0530777ddb67d5b79bbc2c6660d49409449e39fb2bf186f76ccd
+    "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
+  checksum: ce762ecd37fe8b04b4193402f8999b44291d18af59e488ab4571528473aec9cac60c508df5db68298c78a493779e4781433dc2390ce7c34039b2a7a2455bd7db
   languageName: node
   linkType: hard
 
