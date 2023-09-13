@@ -12,6 +12,7 @@ import {
 } from "@stencil/core";
 import { CategoryItem } from "./types";
 import { getCookie } from "../../utils/parseCookies";
+import { safeCookie } from "../../utils/safeCookie";
 
 @Component({
   tag: "cookie-consent-banner",
@@ -171,7 +172,7 @@ export class CookieConsentBanner {
 
     this.acceptedCategoriesPersisted = this.acceptedCategoriesNext;
     const cookieValue = this.acceptedCategoriesNext.join(",");
-    document.cookie = `${this.cookieName}=${cookieValue};domain=${this.cookieDomain};max-age=50400000;path=/`;
+    safeCookie(this.cookieName, cookieValue, { domain: this.cookieDomain });
     this.eventCookieConsentUpdated.emit({
       acceptedCategories: this.acceptedCategoriesPersisted,
     });
