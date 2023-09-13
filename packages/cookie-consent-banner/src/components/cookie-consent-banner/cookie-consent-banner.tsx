@@ -217,7 +217,9 @@ export class CookieConsentBanner {
           tabIndex={-1}
         >
           {Boolean(this.headline) && (
-            <h1 class="cc_headline" part="headline">{this.headline}</h1>
+            <h1 class="cc_headline" part="headline">
+              {this.headline}
+            </h1>
           )}
           <form>
             <p class="cc_text" part="description">
