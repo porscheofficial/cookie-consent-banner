@@ -27,10 +27,10 @@ export class CookieConsentBanner {
   // Available Categories
   @Prop() public availableCategories: CategoryItem[] = [];
 
-  // Overwrite Cookie Name
+  // Overwrite Consent Cookie Name
   @Prop() public cookieName = "cookies_accepted_categories";
 
-  // Overwrite Cookie Domain
+  // Overwrite Consent Cookie Domain
   @Prop() public cookieDomain = document.location.hostname;
 
   // Site Cookies will be deleted if consent for any category is withdrawn. Set to true to disable behaviour.
