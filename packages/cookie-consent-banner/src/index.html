@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -68,7 +68,7 @@
 
     <script>
       const cookieConsentBannerElement = document.querySelector(
-        "cookie-consent-banner"
+        "cookie-consent-banner",
       );
       // // EXAMPLE Remove Marketing
       cookieConsentBannerElement.availableCategories = [
@@ -98,7 +98,7 @@
     function loadAnalyticsScript() {
       // Add Script only once
       const scriptElementExists = document.querySelector(
-        "[data-scriptid='ga']"
+        "[data-scriptid='ga']",
       );
       if (scriptElementExists || window?.ga) return;
 
@@ -109,13 +109,13 @@
       scriptElement.setAttribute("async", "true");
       scriptElement.setAttribute(
         "src",
-        "https://www.googletagmanager.com/gtag/js?id=ENTERID"
+        "https://www.googletagmanager.com/gtag/js?id=ENTERID",
       );
       scriptElement.setAttribute("data-scriptid", "ga");
 
       firstScriptElement.parentNode.insertBefore(
         scriptElement,
-        firstScriptElement
+        firstScriptElement,
       );
     }
     // =========================================================================
