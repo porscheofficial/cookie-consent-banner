@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export * from "./stencilproxy/components";
 
 const isCustomEvent = (
-  event: Event
+  event: Event,
 ): event is CustomEvent<{
   acceptedCategories: string[];
 }> => {
@@ -26,21 +26,21 @@ export const useCookieConsent = (): string[] => {
   useEffect(() => {
     window.addEventListener(
       "cookie_consent_preferences_restored",
-      acceptedCategoriesListener
+      acceptedCategoriesListener,
     );
     window.addEventListener(
       "cookie_consent_preferences_updated",
-      acceptedCategoriesListener
+      acceptedCategoriesListener,
     );
 
     return (): void => {
       window.removeEventListener(
         "cookie_consent_preferences_restored",
-        acceptedCategoriesListener
+        acceptedCategoriesListener,
       );
       window.removeEventListener(
         "cookie_consent_preferences_updated",
-        acceptedCategoriesListener
+        acceptedCategoriesListener,
       );
     };
   }, []);

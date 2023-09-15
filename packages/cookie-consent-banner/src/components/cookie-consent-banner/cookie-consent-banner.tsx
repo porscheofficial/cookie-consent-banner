@@ -157,8 +157,8 @@ export class CookieConsentBanner {
     // Need to reset cookies?
     const consentWithdrawn = Boolean(
       this.acceptedCategoriesPersisted.filter(
-        (x) => !this.acceptedCategoriesNext.includes(x)
-      ).length
+        (x) => !this.acceptedCategoriesNext.includes(x),
+      ).length,
     );
     // Reset cookies
     if (!this.disableResetSiteCookiesOnConsentWithdrawn && consentWithdrawn) {
@@ -186,17 +186,17 @@ export class CookieConsentBanner {
 
   private handleAcceptAll(): void {
     this.acceptedCategoriesNext = this.availableCategories.map(
-      (category) => category.key
+      (category) => category.key,
     );
     this.persistSelection();
   }
 
   private handleEssentialsOnly(): void {
     const mandatoryCategories = this.availableCategories.filter(
-      (category) => category.isMandatory
+      (category) => category.isMandatory,
     );
     this.acceptedCategoriesNext = mandatoryCategories.map(
-      (category) => category.key
+      (category) => category.key,
     );
     this.persistSelection();
   }
@@ -239,7 +239,7 @@ export class CookieConsentBanner {
                         type="checkbox"
                         disabled={category.isMandatory ?? false}
                         checked={this.acceptedCategoriesNext.includes(
-                          category.key
+                          category.key,
                         )}
                         onChange={(event): void => {
                           const isChecked = (
@@ -253,7 +253,7 @@ export class CookieConsentBanner {
                           } else {
                             this.acceptedCategoriesNext =
                               this.acceptedCategoriesNext.filter(
-                                (item) => item !== category.key
+                                (item) => item !== category.key,
                               );
                           }
                         }}

@@ -46,7 +46,7 @@ describe("Cookie Consent Banner", () => {
   it("should be displayed if no cookies are set", async () => {
     await page.setContent(cookieBannerFullyConfigured);
     const cookieBannerInnerDiv = await page.find(
-      "cookie-consent-banner >>> .cc"
+      "cookie-consent-banner >>> .cc",
     );
 
     expect(cookieBannerInnerDiv).toBeDefined();
@@ -60,7 +60,7 @@ describe("Cookie Consent Banner", () => {
       domain: "localhost",
     });
     const cookieBannerInnerDiv = await page.find(
-      "cookie-consent-banner >>> .cc"
+      "cookie-consent-banner >>> .cc",
     );
 
     expect(cookieBannerInnerDiv).toBeDefined();
@@ -75,7 +75,7 @@ describe("Cookie Consent Banner", () => {
     });
     await page.setContent(cookieBannerFullyConfigured);
     const cookieBannerInnerDiv = await page.find(
-      "cookie-consent-banner >>> .cc"
+      "cookie-consent-banner >>> .cc",
     );
 
     expect(cookieBannerInnerDiv).toBeNull();
@@ -96,7 +96,7 @@ describe("Cookie Consent Banner", () => {
     });
     await page.setContent(cookieBannerFullyConfigured);
     const cookieBannerInnerDiv = await page.find(
-      "cookie-consent-banner >>> .cc"
+      "cookie-consent-banner >>> .cc",
     );
 
     expect(cookieBannerInnerDiv).toBeNull();

@@ -44,20 +44,19 @@
     }
   },
   "dependencies": {
-    "@stencil/core": "2.22.1"
+    "@stencil/core": "4.2.1"
   },
   "devDependencies": {
-    "@porscheofficial/eslint-config-porschedigital-react": "2.3.0",
-    "@stencil/react-output-target": "0.4.0",
-    "@types/jest": "27.5.2",
-    "@types/puppeteer": "5.4.7",
-    "eslint": "8.32.0",
+    "@porscheofficial/eslint-config-porschedigital-react": "4.0.0",
+    "@stencil/react-output-target": "0.5.3",
+    "@types/jest": "27.0.3",
+    "eslint": "8.49.0",
     "eslint-plugin-html": "7.1.0",
-    "jest": "27.5.1",
-    "jest-cli": "27.5.1",
-    "prettier": "2.8.3",
-    "puppeteer": "15.5.0",
+    "jest": "27.0.3",
+    "jest-cli": "27.4.5",
+    "prettier": "3.0.3",
+    "puppeteer": "21.2.1",
     "standard-version": "9.5.0",
-    "typescript": "4.9.4"
+    "typescript": "5.2.2"
   }
 }
