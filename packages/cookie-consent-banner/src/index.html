@@ -121,6 +121,14 @@
           isMandatory: true,
         },
       ];
+
+      cookieConsentBannerElement.cookieAttributes = {
+        expires: new Date("2024-01-01"),
+        path: "/",
+        domain: "localhost",
+        secure: true,
+        sameSite: "lax",
+      };
     </script>
   </body>
 

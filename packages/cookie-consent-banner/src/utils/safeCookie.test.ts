@@ -34,7 +34,7 @@ describe("stringifyCookie", () => {
   it("should include the expires attribute if provided as a Date object", () => {
     const name = "test";
     const value = "123";
-    const expires = new Date("2022-01-01");
+    const expires = new Date("2024-01-01");
     const result = stringifyCookie(name, value, { expires });
     expect(result).toContain(`expires=${expires.toUTCString()}`);
   });
