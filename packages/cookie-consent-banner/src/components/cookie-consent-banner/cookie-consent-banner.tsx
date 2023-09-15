@@ -10,9 +10,9 @@ import {
   Prop,
   JSX,
 } from "@stencil/core";
-import { CategoryItem } from "./types";
+import { CategoryItem, CookieAttributes } from "./types";
 import { getCookie } from "../../utils/parseCookies";
-import { safeCookie } from "../../utils/safeCookie";
+import { defaultCookieAttributes, safeCookie } from "../../utils/safeCookie";
 
 @Component({
   tag: "cookie-consent-banner",
@@ -30,8 +30,8 @@ export class CookieConsentBanner {
   // Overwrite Consent Cookie Name
   @Prop() public cookieName = "cookies_accepted_categories";
 
-  // Overwrite Consent Cookie Domain
-  @Prop() public cookieDomain = document.location.hostname;
+  // Overwrite Consent Cookie Attributes
+  @Prop() public cookieAttributes: CookieAttributes = defaultCookieAttributes;
 
   // Site Cookies will be deleted if consent for any category is withdrawn. Set to true to disable behaviour.
   @Prop() public disableResetSiteCookiesOnConsentWithdrawn = false;
@@ -172,7 +172,7 @@ export class CookieConsentBanner {
 
     this.acceptedCategoriesPersisted = this.acceptedCategoriesNext;
     const cookieValue = this.acceptedCategoriesNext.join(",");
-    safeCookie(this.cookieName, cookieValue, { domain: this.cookieDomain });
+    safeCookie(this.cookieName, cookieValue, this.cookieAttributes);
     this.eventCookieConsentUpdated.emit({
       acceptedCategories: this.acceptedCategoriesPersisted,
     });
@@ -297,9 +297,11 @@ export class CookieConsentBanner {
                 )}
               <button
                 part="button-accept-all"
+                data-test-id="accept-all-btn"
                 onClick={() => this.handleAcceptAll()}
                 onKeyPress={() => this.handleAcceptAll()}
                 type="button"
+                class="btn"
               >
                 {!this.isShownSettings
                   ? this.btnLabelAcceptAndContinue

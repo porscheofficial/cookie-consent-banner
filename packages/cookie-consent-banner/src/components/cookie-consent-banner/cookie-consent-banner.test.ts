@@ -32,6 +32,17 @@ describe("Cookie Consent Banner", () => {
 
   beforeEach(async () => {
     page = await newE2EPage();
+
+    await page.waitForChanges();
+  });
+
+  afterEach(async () => {
+    await page.deleteCookie(
+      {
+        name: "cookies_accepted_categories",
+      },
+      { name: "someUnrelatedCookie" }
+    );
   });
 
   it("should render", async () => {
@@ -39,7 +50,7 @@ describe("Cookie Consent Banner", () => {
 
     const cookieBanner = await page.find("cookie-consent-banner");
 
-    expect(cookieBanner).toBeDefined();
+    expect(cookieBanner).not.toBeNull();
     expect(cookieBanner).toHaveClasses(["hydrated"]);
   });
 
@@ -49,7 +60,7 @@ describe("Cookie Consent Banner", () => {
       "cookie-consent-banner >>> .cc",
     );
 
-    expect(cookieBannerInnerDiv).toBeDefined();
+    expect(cookieBannerInnerDiv).not.toBeNull();
   });
 
   it("should be displayed if cookies other than cookieName are set", async () => {
@@ -63,14 +74,14 @@ describe("Cookie Consent Banner", () => {
       "cookie-consent-banner >>> .cc",
     );
 
-    expect(cookieBannerInnerDiv).toBeDefined();
+    expect(cookieBannerInnerDiv).not.toBeNull();
   });
 
   it("should not be displayed if cookieName cookie is set", async () => {
     // default `cookieName` is cookies_accepted_categories
     await page.setCookie({
       name: "cookies_accepted_categories",
-      value: "technically_required,analytics",
+      value: encodeURIComponent("technically_required,analytics"),
       domain: "localhost",
     });
     await page.setContent(cookieBannerFullyConfigured);
@@ -85,7 +96,7 @@ describe("Cookie Consent Banner", () => {
     // default `cookieName` is cookies_accepted_categories
     await page.setCookie({
       name: "cookies_accepted_categories",
-      value: "technically_required,analytics",
+      value: encodeURIComponent("technically_required,analytics"),
       domain: "localhost",
     });
 
@@ -100,5 +111,53 @@ describe("Cookie Consent Banner", () => {
     );
 
     expect(cookieBannerInnerDiv).toBeNull();
+  });
+
+  it("should set cookies_accepted_categories to 'technically_required,analytics' when accept-all-btn is clicked", async () => {
+    await page.setContent(cookieBannerFullyConfigured);
+    await page.waitForChanges();
+    const banner = await page.find("cookie-consent-banner");
+
+    banner.setProperty("availableCategories", [
+      {
+        description:
+          "Enable you to navigate and use the basic functions and to store preferences.",
+        key: "technically_required",
+        label: "Technically necessary cookies",
+        isMandatory: true,
+      },
+      {
+        description:
+          "Enable us to determine how visitors interact with our service in order to improve the user experience.",
+        key: "analytics",
+        label: "Analysis cookies",
+      },
+    ]);
+    await page.waitForChanges();
+
+    const acceptAllBtn = await page.find(
+      'cookie-consent-banner >>> button[data-test-id="accept-all-btn"]'
+    );
+    expect(acceptAllBtn).toEqualText("Agree and continue");
+    // somehow acceptAllBtn.click doesn't work
+    // (Puppeteer Error "Node is either not clickable or not an HTMLElement")
+    await page.evaluate(() =>
+      (
+        document
+          .querySelector("cookie-consent-banner")
+          ?.shadowRoot?.querySelector(
+            'button[data-test-id="accept-all-btn"]'
+          ) as HTMLElement | undefined
+      )?.click()
+    );
+    await page.waitForChanges();
+
+    // Check if cookies_accepted_categories is set to "technically_required,analytics"
+    const cookieAcceptedCategories = (await page.cookies()).find(
+      (cookie) => cookie.name === "cookies_accepted_categories"
+    );
+    expect(cookieAcceptedCategories?.value).toBe(
+      encodeURIComponent("technically_required,analytics")
+    );
   });
 });
