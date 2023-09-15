@@ -37,7 +37,7 @@ export const stringifyCookie = (
   return `${cookieString}; ${attributesString}`;
 };
 
-const defaultAttributes: CookieAttributes = {
+export const defaultCookieAttributes: CookieAttributes = {
   path: "/",
   expires: 7,
   domain: document.location.hostname,
@@ -48,7 +48,7 @@ export const safeCookie = (
 ): void => {
   const [name, value, attributes] = attrs;
   document.cookie = stringifyCookie(name, value, {
-    ...defaultAttributes,
+    ...defaultCookieAttributes,
     ...attributes,
   });
 };

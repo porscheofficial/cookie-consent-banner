@@ -5,8 +5,8 @@ export const parseCookies = (): CookieMap =>
     const [key, value] = curr.split("=");
 
     // key and value may be surrounded by whitespace (space and tab characters)
-    const cookieKey = key.trim();
-    const cookieValue = value.trim();
+    const cookieKey = decodeURIComponent(key).trim();
+    const cookieValue = decodeURIComponent(value).trim();
     return { ...acc, [cookieKey]: cookieValue };
   }, {});
 
