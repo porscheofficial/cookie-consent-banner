@@ -37,11 +37,12 @@
       }
 
       /* Check if CSS Parts are merged with default styles and CSS variable overrides */
-      cookie-consent-banner::part(primary-button) {
+      cookie-consent-banner::part(button-accept-all) {
         text-transform: uppercase;
       }
 
-      cookie-consent-banner::part(secondary-button) {
+      cookie-consent-banner::part(button-persist-selection),
+      cookie-consent-banner::part(button-essential-only) {
         text-transform: uppercase;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
       }

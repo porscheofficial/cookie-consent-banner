@@ -141,12 +141,13 @@ The appearance of the component can be influenced by updating the availabe CSS P
 
 For full control over the styles we provide you these CSS parts to customize completely by your own:
 
-1. `cookie-consent-banner::part(primary-button)` for styling the primary button
-2. `cookie-consent-banner::part(secondary-button)` for styling the secondary button
-3. `cookie-consent-banner::part(checkbox)` for styling the checkboxes
-4. `cookie-consent-banner::part(description-main)` for styling the main description text
-5. `cookie-consent-banner::part(description-settings)` for styling the description text on the expanded settings
-6. `cookie-consent-banner::part(headline)` for styling the headline
+1. `cookie-consent-banner::part(button-accept-all)` for styling the primary button which triggers "Accept All Cookies"
+2. `cookie-consent-banner::part(button-persist-selection)` for styling the secondary button which triggers "Save Selection"
+3. `cookie-consent-banner::part(button-essential-only)` for styling the secondary button which triggers "Only required Cookies"
+4. `cookie-consent-banner::part(checkbox)` for styling the checkboxes
+5. `cookie-consent-banner::part(description-main)` for styling the main description text
+6. `cookie-consent-banner::part(description-settings)` for styling the description text on the expanded settings
+7. `cookie-consent-banner::part(headline)` for styling the headline
 
 ```html
 <style>
