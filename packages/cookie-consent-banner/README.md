@@ -49,19 +49,19 @@ npm i @porscheofficial/cookie-consent-banner --S
 
 ### Attributes
 
-| Attribute (Web Component)                         | Default                         | Type             | Description                                                                      |
-| :------------------------------------------------ | :------------------------------ | :--------------- | :------------------------------------------------------------------------------- |
-| `available-categories`                            | `[]`                            | `CategoryItem[]` | Provide the available Categories. See Real World example                         |
-| `cookie-domain`                                   | `document.location.hostname`    | `string`         |                                                                                  |
-| `cookie-name`                                     | `"cookies_accepted_categories"` | `string`         |                                                                                  |
-| `disable-reset-site-cookies-on-consent-withdrawn` | `false`                         | `boolean`        | Prevent cookies from being deleted automatically if consent of the user changed. |
-| `disable-slide-in-animation`                      | `false`                         | `boolean`        | Disable slide-in animation of banner (See #7)                                    |
-| `headline`                                        | `undefined`                     | `string`         |                                                                                  |
-| `btn-label-accept-and-continue`                   | `undefined`                     | `string`         |                                                                                  |
-| `btn-label-select-all-and-continue`               | `undefined`                     | `string`         |                                                                                  |
-| `btn-label-only-essential-and-continue`           | `undefined`                     | `string`         |                                                                                  |
-| `btn-label-persist-selection-and-continue`        | `undefined`                     | `string`         |
-| `content-settings-description`                    | `undefined`                     | `string`         |                                                                                  |
+| Attribute (Web Component)                         | Default                                                     | Type                                                                  | Description                                                                                                                  |
+| :------------------------------------------------ | :---------------------------------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
+| `available-categories`                            | `[]`                                                        | `CategoryItem[]`                                                      | Provide the available Categories. See Real World example                                                                     |
+| `cookie-attributes`                               | `{path: "/",expires: 7,domain: document.location.hostname}` | [`CookieAttributes`](./src/components/cookie-consent-banner/types.ts) | Customization of the cookie attributes for the consent cookie (`expires` can either be a number of days or a `Date` object). |
+| `cookie-name`                                     | `"cookies_accepted_categories"`                             | `string`                                                              |                                                                                                                              |
+| `disable-reset-site-cookies-on-consent-withdrawn` | `false`                                                     | `boolean`                                                             | Prevent cookies from being deleted automatically if consent of the user changed.                                             |
+| `disable-slide-in-animation`                      | `false`                                                     | `boolean`                                                             | Disable slide-in animation of banner (See #7)                                                                                |
+| `headline`                                        | `undefined`                                                 | `string`                                                              |                                                                                                                              |
+| `btn-label-accept-and-continue`                   | `undefined`                                                 | `string`                                                              |                                                                                                                              |
+| `btn-label-select-all-and-continue`               | `undefined`                                                 | `string`                                                              |                                                                                                                              |
+| `btn-label-only-essential-and-continue`           | `undefined`                                                 | `string`                                                              |                                                                                                                              |
+| `btn-label-persist-selection-and-continue`        | `undefined`                                                 | `string`                                                              |
+| `content-settings-description`                    | `undefined`                                                 | `string`                                                              |                                                                                                                              |
 
 ### Events Dispatched by the Component
 
