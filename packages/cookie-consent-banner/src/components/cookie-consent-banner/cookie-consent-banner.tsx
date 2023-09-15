@@ -276,7 +276,7 @@ export class CookieConsentBanner {
                 <button
                   part="button-persist-selection"
                   type="submit"
-                  class="secondary"
+                  class="btn_persist_selection secondary"
                   onClick={() => this.persistSelection()}
                   onKeyPress={() => this.persistSelection()}
                 >
@@ -287,7 +287,7 @@ export class CookieConsentBanner {
                 !!this.btnLabelOnlyEssentialAndContinue && (
                   <button
                     part="button-essential-only"
-                    class="secondary"
+                    class="btn_essentials_only secondary"
                     type="button"
                     onClick={() => this.handleEssentialsOnly()}
                     onKeyPress={() => this.handleEssentialsOnly()}
@@ -301,7 +301,7 @@ export class CookieConsentBanner {
                 onClick={() => this.handleAcceptAll()}
                 onKeyPress={() => this.handleAcceptAll()}
                 type="button"
-                class="btn"
+                class="btn_accept_all"
               >
                 {!this.isShownSettings
                   ? this.btnLabelAcceptAndContinue
