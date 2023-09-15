@@ -144,8 +144,9 @@ For full control over the styles we provide you these CSS parts to customize com
 1. `cookie-consent-banner::part(primary-button)` for styling the primary button
 2. `cookie-consent-banner::part(secondary-button)` for styling the secondary button
 3. `cookie-consent-banner::part(checkbox)` for styling the checkboxes
-4. `cookie-consent-banner::part(description)` for styling the description texts
-5. `cookie-consent-banner::part(headline)` for styling the headline
+4. `cookie-consent-banner::part(description-main)` for styling the main description text
+5. `cookie-consent-banner::part(description-settings)` for styling the description text on the expanded settings
+6. `cookie-consent-banner::part(headline)` for styling the headline
 
 ```html
 <style>

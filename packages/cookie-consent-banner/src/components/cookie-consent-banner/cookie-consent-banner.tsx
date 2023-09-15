@@ -222,12 +222,12 @@ export class CookieConsentBanner {
             </h1>
           )}
           <form>
-            <p class="cc_text" part="description">
+            <p class="cc_text" part="description-main">
               <slot />
             </p>
             {Boolean(this.isShownSettings) && (
               <div class="cc_settings">
-                <p part="description" class="cc_settings_description">
+                <p part="description-settings" class="cc_settings_description">
                   {this.contentSettingsDescription}
                 </p>
                 <div class="cc_checkboxes">

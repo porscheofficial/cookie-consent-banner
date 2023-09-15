@@ -50,9 +50,14 @@
         accent-color: rgb(24, 251, 107);
       }
 
-      cookie-consent-banner::part(description),
+      cookie-consent-banner::part(description-main),
+      cookie-consent-banner::part(description-settings),
       cookie-consent-banner::part(headline) {
         font-family: "Arial", sans-serif;
+      }
+
+      cookie-consent-banner::part(description-settings) {
+        color: rgba(255, 255, 255, 0.66);
       }
     </style>
   </head>
