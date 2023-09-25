@@ -10,8 +10,9 @@ import {
   Prop,
   JSX,
 } from "@stencil/core";
-import { CategoryItem } from "./types";
+import { CategoryItem, CookieAttributes } from "./types";
 import { getCookie } from "../../utils/parseCookies";
+import { defaultCookieAttributes, safeCookie } from "../../utils/safeCookie";
 
 @Component({
   tag: "cookie-consent-banner",
@@ -26,11 +27,11 @@ export class CookieConsentBanner {
   // Available Categories
   @Prop() public availableCategories: CategoryItem[] = [];
 
-  // Overwrite Cookie Name
+  // Overwrite Consent Cookie Name
   @Prop() public cookieName = "cookies_accepted_categories";
 
-  // Overwrite Cookie Domain
-  @Prop() public cookieDomain = document.location.hostname;
+  // Overwrite Consent Cookie Attributes
+  @Prop() public cookieAttributes: CookieAttributes = defaultCookieAttributes;
 
   // Site Cookies will be deleted if consent for any category is withdrawn. Set to true to disable behaviour.
   @Prop() public disableResetSiteCookiesOnConsentWithdrawn = false;
@@ -171,7 +172,7 @@ export class CookieConsentBanner {
 
     this.acceptedCategoriesPersisted = this.acceptedCategoriesNext;
     const cookieValue = this.acceptedCategoriesNext.join(",");
-    document.cookie = `${this.cookieName}=${cookieValue};domain=${this.cookieDomain};max-age=50400000;path=/`;
+    safeCookie(this.cookieName, cookieValue, this.cookieAttributes);
     this.eventCookieConsentUpdated.emit({
       acceptedCategories: this.acceptedCategoriesPersisted,
     });
@@ -275,7 +276,7 @@ export class CookieConsentBanner {
                 <button
                   part="button-persist-selection"
                   type="submit"
-                  class="secondary"
+                  class="btn_persist_selection secondary"
                   onClick={() => this.persistSelection()}
                   onKeyPress={() => this.persistSelection()}
                 >
@@ -286,7 +287,7 @@ export class CookieConsentBanner {
                 !!this.btnLabelOnlyEssentialAndContinue && (
                   <button
                     part="button-essential-only"
-                    class="secondary"
+                    class="btn_essentials_only secondary"
                     type="button"
                     onClick={() => this.handleEssentialsOnly()}
                     onKeyPress={() => this.handleEssentialsOnly()}
@@ -296,9 +297,11 @@ export class CookieConsentBanner {
                 )}
               <button
                 part="button-accept-all"
+                data-test-id="accept-all-btn"
                 onClick={() => this.handleAcceptAll()}
                 onKeyPress={() => this.handleAcceptAll()}
                 type="button"
+                class="btn_accept_all"
               >
                 {!this.isShownSettings
                   ? this.btnLabelAcceptAndContinue

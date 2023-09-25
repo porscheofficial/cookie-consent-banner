@@ -1,4 +1,5 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
+import type { Protocol } from "puppeteer";
 
 const cookieBannerFullyConfigured = `
 <cookie-consent-banner
@@ -10,7 +11,7 @@ const cookieBannerFullyConfigured = `
 >
   We use cookies and similar technologies to provide certain features,
   enhance the user experience and deliver content that is relevant to your
-  interests. Depending on their purpose, analysis and marketing cookies may
+  interests. Depending on their purpose, Analytics and marketing cookies may
   be used in addition to technically necessary cookies. By clicking on
   "Agree and continue", you declare your consent to the use of the
   aforementioned cookies.
@@ -30,8 +31,38 @@ const cookieBannerFullyConfigured = `
 describe("Cookie Consent Banner", () => {
   let page: E2EPage;
 
+  const clickInCookieBanner = async (innerSelector: string): Promise<void> => {
+    // somehow .click() doesn't work in the shadow dom
+    // (Puppeteer Error "Node is either not clickable or not an HTMLElement")
+    await page.evaluate((inner) => {
+      (
+        document
+          .querySelector("cookie-consent-banner")
+          ?.shadowRoot?.querySelector(inner) as HTMLElement | undefined
+      )?.click();
+    }, innerSelector);
+  };
+
+  const getConsentCookie = async (): Promise<
+    Protocol.Network.Cookie | undefined
+  > =>
+    (await page.cookies()).find(
+      (cookie) => cookie.name === "cookies_accepted_categories",
+    );
+
   beforeEach(async () => {
     page = await newE2EPage();
+
+    await page.waitForChanges();
+  });
+
+  afterEach(async () => {
+    await page.deleteCookie(
+      {
+        name: "cookies_accepted_categories",
+      },
+      { name: "someUnrelatedCookie" },
+    );
   });
 
   it("should render", async () => {
@@ -39,7 +70,7 @@ describe("Cookie Consent Banner", () => {
 
     const cookieBanner = await page.find("cookie-consent-banner");
 
-    expect(cookieBanner).toBeDefined();
+    expect(cookieBanner).not.toBeNull();
     expect(cookieBanner).toHaveClasses(["hydrated"]);
   });
 
@@ -49,7 +80,7 @@ describe("Cookie Consent Banner", () => {
       "cookie-consent-banner >>> .cc",
     );
 
-    expect(cookieBannerInnerDiv).toBeDefined();
+    expect(cookieBannerInnerDiv).not.toBeNull();
   });
 
   it("should be displayed if cookies other than cookieName are set", async () => {
@@ -63,14 +94,14 @@ describe("Cookie Consent Banner", () => {
       "cookie-consent-banner >>> .cc",
     );
 
-    expect(cookieBannerInnerDiv).toBeDefined();
+    expect(cookieBannerInnerDiv).not.toBeNull();
   });
 
   it("should not be displayed if cookieName cookie is set", async () => {
     // default `cookieName` is cookies_accepted_categories
     await page.setCookie({
       name: "cookies_accepted_categories",
-      value: "technically_required,analytics",
+      value: encodeURIComponent("technically_required,analytics"),
       domain: "localhost",
     });
     await page.setContent(cookieBannerFullyConfigured);
@@ -85,7 +116,7 @@ describe("Cookie Consent Banner", () => {
     // default `cookieName` is cookies_accepted_categories
     await page.setCookie({
       name: "cookies_accepted_categories",
-      value: "technically_required,analytics",
+      value: encodeURIComponent("technically_required,analytics"),
       domain: "localhost",
     });
 
@@ -100,5 +131,120 @@ describe("Cookie Consent Banner", () => {
     );
 
     expect(cookieBannerInnerDiv).toBeNull();
+  });
+
+  it("should set cookies_accepted_categories to all passed cookie categories when 'Accept All' button is clicked", async () => {
+    await page.setContent(cookieBannerFullyConfigured);
+    await page.waitForChanges();
+    const banner = await page.find("cookie-consent-banner");
+
+    banner.setProperty("availableCategories", [
+      {
+        description:
+          "Enable you to navigate and use the basic functions and to store preferences.",
+        key: "technically_required",
+        label: "Technically necessary cookies",
+        isMandatory: true,
+      },
+      {
+        description:
+          "Enable us to determine how visitors interact with our service in order to improve the user experience.",
+        key: "analytics",
+        label: "Analytics cookies",
+      },
+    ]);
+    await page.waitForChanges();
+
+    const acceptAllBtn = await page.find(
+      "cookie-consent-banner >>> .btn_accept_all",
+    );
+    expect(acceptAllBtn).toEqualText("Agree and continue");
+    await clickInCookieBanner(".btn_accept_all");
+    await page.waitForChanges();
+
+    // Check if cookies_accepted_categories is set to "technically_required,analytics"
+    const cookieAcceptedCategories = (await page.cookies()).find(
+      (cookie) => cookie.name === "cookies_accepted_categories",
+    );
+    expect(cookieAcceptedCategories?.value).toBe(
+      encodeURIComponent("technically_required,analytics"),
+    );
+  });
+
+  it("should set cookies_accepted_categories to only the mandatory when 'Only required' button is clicked", async () => {
+    await page.setContent(cookieBannerFullyConfigured);
+    await page.waitForChanges();
+    const banner = await page.find("cookie-consent-banner");
+
+    banner.setProperty("availableCategories", [
+      {
+        description:
+          "Enable you to navigate and use the basic functions and to store preferences.",
+        key: "technically_required",
+        label: "Technically necessary cookies",
+        isMandatory: true,
+      },
+      {
+        description:
+          "Enable us to determine how visitors interact with our service in order to improve the user experience.",
+        key: "analytics",
+        label: "Analytics cookies",
+      },
+    ]);
+    await page.waitForChanges();
+
+    const onlyRequiredButton = await page.find(
+      "cookie-consent-banner >>> .btn_essentials_only",
+    );
+    expect(onlyRequiredButton).toEqualText(
+      "Continue with technically required cookies only",
+    );
+    await clickInCookieBanner(".btn_essentials_only");
+    await page.waitForChanges();
+
+    // Check if cookies_accepted_categories is set to "technically_required,analytics"
+    const cookieAcceptedCategories = await getConsentCookie();
+    expect(cookieAcceptedCategories?.value).toBe(
+      encodeURIComponent("technically_required"),
+    );
+  });
+
+  it("should set the cookies_accepted_categories cookie with all passed cookie attributes", async () => {
+    await page.setContent(cookieBannerFullyConfigured);
+    await page.waitForChanges();
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await page.$eval("cookie-consent-banner", (elm: any) => {
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access, no-param-reassign  */
+      // within the browser's context
+      // let's set new property values on the component
+      elm.availableCategories = [
+        {
+          description:
+            "Enable you to navigate and use the basic functions and to store preferences.",
+          key: "technically_required",
+          label: "Technically necessary cookies",
+          isMandatory: true,
+        },
+      ];
+      elm.cookieAttributes = {
+        expires: new Date("2024-01-01"),
+        secure: true,
+        sameSite: "lax",
+      };
+      /* eslint-enable @typescript-eslint/no-unsafe-member-access, no-param-reassign  */
+    });
+    await page.waitForChanges();
+    await clickInCookieBanner(".btn_accept_all");
+    await page.waitForChanges();
+
+    const cookieAcceptedCategories = await getConsentCookie();
+
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+    expect(cookieAcceptedCategories?.expires).toBe(1704067200);
+    expect(cookieAcceptedCategories?.secure).toBe(true);
+    expect(cookieAcceptedCategories?.sameSite).toBe("Lax");
+
+    expect(0).toBe(0);
   });
 });
