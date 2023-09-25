@@ -6,11 +6,11 @@ const isDefined = <T>(argument: T | undefined): argument is T =>
 export const stringifyCookie = (
   name: string,
   value: string,
-  attributes?: CookieAttributes
+  attributes?: CookieAttributes,
 ): string => {
   const cookieAttributes: CookieAttributes = attributes ?? {};
   const cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(
-    value
+    value,
   ).replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent)}`;
 
   const attributesString = Object.entries(cookieAttributes)
@@ -20,7 +20,7 @@ export const stringifyCookie = (
         if (typeof attributeValue === "number") {
           const MILLISECONDS_IN_DAY = 86400000;
           const expiresAsDate = new Date(
-            Date.now() + attributeValue * MILLISECONDS_IN_DAY
+            Date.now() + attributeValue * MILLISECONDS_IN_DAY,
           );
           return `${attributeKey}=${expiresAsDate.toUTCString()}`;
         }

@@ -6,7 +6,7 @@ describe("stringifyCookie", () => {
     const value = "123";
     const result = stringifyCookie(name, value);
     expect(result).toContain(
-      `${encodeURIComponent(name)}=${encodeURIComponent(value)}`
+      `${encodeURIComponent(name)}=${encodeURIComponent(value)}`,
     );
   });
 
@@ -15,7 +15,7 @@ describe("stringifyCookie", () => {
     const value = "abc%def";
     const result = stringifyCookie(name, value);
     expect(result).toContain(
-      `${encodeURIComponent(name)}=${encodeURIComponent(value)}`
+      `${encodeURIComponent(name)}=${encodeURIComponent(value)}`,
     );
   });
 
@@ -26,7 +26,7 @@ describe("stringifyCookie", () => {
     const expires = 1;
     const result = stringifyCookie(name, value, { expires });
     const expectedDate = new Date(
-      Date.now() + expires * MILLISECONDS_IN_DAY
+      Date.now() + expires * MILLISECONDS_IN_DAY,
     ).toUTCString();
     expect(result).toContain(`expires=${expectedDate}`);
   });

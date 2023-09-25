@@ -5,7 +5,13 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/no-unknown-property": "off"
+    "react/no-unknown-property": "off",
+    "n/no-unpublished-import": [
+      "error",
+      {
+        "ignoreTypeImport": true
+      }
+    ]
   },
   "plugins": ["eslint-plugin-html"]
 }

@@ -47,7 +47,7 @@ describe("Cookie Consent Banner", () => {
     Protocol.Network.Cookie | undefined
   > =>
     (await page.cookies()).find(
-      (cookie) => cookie.name === "cookies_accepted_categories"
+      (cookie) => cookie.name === "cookies_accepted_categories",
     );
 
   beforeEach(async () => {
@@ -61,7 +61,7 @@ describe("Cookie Consent Banner", () => {
       {
         name: "cookies_accepted_categories",
       },
-      { name: "someUnrelatedCookie" }
+      { name: "someUnrelatedCookie" },
     );
   });
 
@@ -156,7 +156,7 @@ describe("Cookie Consent Banner", () => {
     await page.waitForChanges();
 
     const acceptAllBtn = await page.find(
-      "cookie-consent-banner >>> .btn_accept_all"
+      "cookie-consent-banner >>> .btn_accept_all",
     );
     expect(acceptAllBtn).toEqualText("Agree and continue");
     await clickInCookieBanner(".btn_accept_all");
@@ -164,10 +164,10 @@ describe("Cookie Consent Banner", () => {
 
     // Check if cookies_accepted_categories is set to "technically_required,analytics"
     const cookieAcceptedCategories = (await page.cookies()).find(
-      (cookie) => cookie.name === "cookies_accepted_categories"
+      (cookie) => cookie.name === "cookies_accepted_categories",
     );
     expect(cookieAcceptedCategories?.value).toBe(
-      encodeURIComponent("technically_required,analytics")
+      encodeURIComponent("technically_required,analytics"),
     );
   });
 
@@ -194,10 +194,10 @@ describe("Cookie Consent Banner", () => {
     await page.waitForChanges();
 
     const onlyRequiredButton = await page.find(
-      "cookie-consent-banner >>> .btn_essentials_only"
+      "cookie-consent-banner >>> .btn_essentials_only",
     );
     expect(onlyRequiredButton).toEqualText(
-      "Continue with technically required cookies only"
+      "Continue with technically required cookies only",
     );
     await clickInCookieBanner(".btn_essentials_only");
     await page.waitForChanges();
@@ -205,7 +205,7 @@ describe("Cookie Consent Banner", () => {
     // Check if cookies_accepted_categories is set to "technically_required,analytics"
     const cookieAcceptedCategories = await getConsentCookie();
     expect(cookieAcceptedCategories?.value).toBe(
-      encodeURIComponent("technically_required")
+      encodeURIComponent("technically_required"),
     );
   });
 
