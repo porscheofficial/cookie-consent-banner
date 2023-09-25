@@ -217,24 +217,28 @@ export class CookieConsentBanner {
           tabIndex={-1}
         >
           {Boolean(this.headline) && (
-            <h1 class="cc_headline">{this.headline}</h1>
+            <h1 class="cc_headline" part="headline">
+              {this.headline}
+            </h1>
           )}
           <form>
-            <p class="cc_text">
+            <p class="cc_text" part="description-main">
               <slot />
             </p>
             {Boolean(this.isShownSettings) && (
               <div class="cc_settings">
-                <p class="cc_settings_description">
+                <p part="description-settings" class="cc_settings_description">
                   {this.contentSettingsDescription}
                 </p>
                 <div class="cc_checkboxes">
                   {this.availableCategories.map((category) => (
                     <label
+                      part="checkbox-label"
                       class="cc_checkboxes_item"
                       htmlFor={`check-category-${category.label}`}
                     >
                       <input
+                        part="checkbox"
                         id={`check-category-${category.label}`}
                         type="checkbox"
                         disabled={category.isMandatory ?? false}
@@ -269,6 +273,7 @@ export class CookieConsentBanner {
             <div class="cc_buttons">
               {Boolean(this.isShownSettings) && (
                 <button
+                  part="button-persist-selection"
                   type="submit"
                   class="secondary"
                   onClick={() => this.persistSelection()}
@@ -280,6 +285,7 @@ export class CookieConsentBanner {
               {!this.isShownSettings &&
                 !!this.btnLabelOnlyEssentialAndContinue && (
                   <button
+                    part="button-essential-only"
                     class="secondary"
                     type="button"
                     onClick={() => this.handleEssentialsOnly()}
@@ -289,6 +295,7 @@ export class CookieConsentBanner {
                   </button>
                 )}
               <button
+                part="button-accept-all"
                 onClick={() => this.handleAcceptAll()}
                 onKeyPress={() => this.handleAcceptAll()}
                 type="button"
