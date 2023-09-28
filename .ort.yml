@@ -1,4 +1,6 @@
 # See: https://github.com/oss-review-toolkit/ort/blob/main/docs/config-file-ort-yml.md
+analyzer:
+  skip_excluded: true
 excludes:
   paths:
     - pattern: ".github/**"
