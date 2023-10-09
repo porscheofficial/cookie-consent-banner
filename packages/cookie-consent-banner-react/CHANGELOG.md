@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [4.0.0](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.5...v4.0.0) (2023-10-09)
 
+* The `cookieDomain` property has been replaced by the domain property of the more flexible `cookieAttributes` object property.
+* feat: enable a more flexible way of styling with the `::parts` pseudo selector
+* feat: enable customization of the cookie attributes for the consent cookie via the `cookieAttributes` Property
+General improvements
+* the consent cookie is now stored in a URI encoded format
+
 ## [3.1.5](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.4...v3.1.5) (2023-08-14)
 
 * fix: correctly publish package
