@@ -43,7 +43,7 @@ npm i @porscheofficial/cookie-consent-banner --S
 ```html
 <script
   type="module"
-  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@1.0.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@4.0.1/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
 ></script>
 ```
 
