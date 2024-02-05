@@ -217,9 +217,9 @@ describe("Cookie Consent Banner", () => {
     // eslint-disable-next-line no-magic-numbers, @typescript-eslint/no-magic-numbers
     inAWeek.setDate(inAWeek.getDate() + 7);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await page.$eval(
       "cookie-consent-banner",
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (elm: any, _inAWeekTimestamp) => {
         /* eslint-disable @typescript-eslint/no-unsafe-member-access, no-param-reassign  */
         // within the browser's context
