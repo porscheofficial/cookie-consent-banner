@@ -122,8 +122,12 @@
         },
       ];
 
+      const inAWeek = new Date();
+      // eslint-disable-next-line no-magic-numbers
+      inAWeek.setDate(inAWeek.getDate() + 7);
+
       cookieConsentBannerElement.cookieAttributes = {
-        expires: new Date("2024-01-01"),
+        expires: inAWeek,
         path: "/",
         domain: "localhost",
         secure: true,

@@ -213,35 +213,44 @@ describe("Cookie Consent Banner", () => {
     await page.setContent(cookieBannerFullyConfigured);
     await page.waitForChanges();
 
+    const inAWeek = new Date();
+    // eslint-disable-next-line no-magic-numbers, @typescript-eslint/no-magic-numbers
+    inAWeek.setDate(inAWeek.getDate() + 7);
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await page.$eval("cookie-consent-banner", (elm: any) => {
-      /* eslint-disable @typescript-eslint/no-unsafe-member-access, no-param-reassign  */
-      // within the browser's context
-      // let's set new property values on the component
-      elm.availableCategories = [
-        {
-          description:
-            "Enable you to navigate and use the basic functions and to store preferences.",
-          key: "technically_required",
-          label: "Technically necessary cookies",
-          isMandatory: true,
-        },
-      ];
-      elm.cookieAttributes = {
-        expires: new Date("2024-01-01"),
-        secure: true,
-        sameSite: "lax",
-      };
-      /* eslint-enable @typescript-eslint/no-unsafe-member-access, no-param-reassign  */
-    });
+    await page.$eval(
+      "cookie-consent-banner",
+      (elm: any, _inAWeekTimestamp) => {
+        /* eslint-disable @typescript-eslint/no-unsafe-member-access, no-param-reassign  */
+        // within the browser's context
+        // let's set new property values on the component
+        elm.availableCategories = [
+          {
+            description:
+              "Enable you to navigate and use the basic functions and to store preferences.",
+            key: "technically_required",
+            label: "Technically necessary cookies",
+            isMandatory: true,
+          },
+        ];
+        elm.cookieAttributes = {
+          expires: new Date(_inAWeekTimestamp),
+          secure: true,
+          sameSite: "lax",
+        };
+      },
+      inAWeek.getTime(),
+    );
     await page.waitForChanges();
     await clickInCookieBanner(".btn_accept_all");
     await page.waitForChanges();
 
     const cookieAcceptedCategories = await getConsentCookie();
 
-    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-    expect(cookieAcceptedCategories?.expires).toBe(1704067200);
+    expect(cookieAcceptedCategories?.expires).toBe(
+      // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+      Math.floor(inAWeek.getTime() / 1000), // Puppeteer returns seconds, JS uses milliseconds
+    );
     expect(cookieAcceptedCategories?.secure).toBe(true);
     expect(cookieAcceptedCategories?.sameSite).toBe("Lax");
 
