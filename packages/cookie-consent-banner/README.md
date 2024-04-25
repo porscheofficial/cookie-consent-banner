@@ -114,6 +114,9 @@ The appearance of the component can be influenced by updating the availabe CSS P
     --cookie-consent-banner-border-radius-buttons: 1rem;
     --cookie-consent-banner-border-radius-body: 0;
 
+    /* BOX-SHADOW */
+    --cookie-consent-banner-box-shadow: 0px -3px 13px 0px rgba(57, 57, 57, 0.38);
+
     /* SPACINGS */
     --cookie-consent-banner-spacings-container-padding-top: 1rem;
     --cookie-consent-banner-spacings-container-padding-left: 1rem;
@@ -148,14 +151,16 @@ For full control over the styles we provide you these CSS parts to customize com
 5. `cookie-consent-banner::part(description-main)` for styling the main description text
 6. `cookie-consent-banner::part(description-settings)` for styling the description text on the expanded settings
 7. `cookie-consent-banner::part(headline)` for styling the headline
+8. `cookie-consent-banner::part(body)` for styling the banner body
 
 ```html
 <style>
-  cookie-consent-banner::part(primary-button) {
+  cookie-consent-banner::part(button-accept-all) {
     text-transform: uppercase;
   }
 
-  cookie-consent-banner::part(secondary-button) {
+  cookie-consent-banner::part(button-persist-selection),
+  cookie-consent-banner::part(button-essential-only) {
     text-transform: uppercase;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   }
@@ -167,6 +172,10 @@ For full control over the styles we provide you these CSS parts to customize com
   cookie-consent-banner::part(description),
   cookie-consent-banner::part(headline) {
     font-family: "Arial", sans-serif;
+  }
+
+  cookie-consent-banner::part(body) {
+    max-width: 80ch;
   }
 </style>
 ```
@@ -239,7 +248,7 @@ Have a look on the main repository for an [example consent flow](https://github.
 <script>
   /* Update available Cookie Categories */
   const cookieConsentBannerElement = document.querySelector(
-    "cookie-consent-banner"
+    "cookie-consent-banner",
   );
   cookieConsentBannerElement.availableCategories = [
     {
@@ -284,7 +293,7 @@ Have a look on the main repository for an [example consent flow](https://github.
   }
   window.addEventListener(
     "cookie_consent_preferences_restored",
-    loadTagManager
+    loadTagManager,
   );
   window.addEventListener("cookie_consent_preferences_updated", loadTagManager);
 </script>
@@ -354,7 +363,7 @@ Once the visitor stores the consent settings, two things happen: The consent dat
 <script>
   /* Update available Cookie Categories */
   const cookieConsentBannerElement = document.querySelector(
-    "cookie-consent-banner"
+    "cookie-consent-banner",
   );
   cookieConsentBannerElement.availableCategories = [
     {
@@ -404,13 +413,13 @@ Once the visitor stores the consent settings, two things happen: The consent dat
     scriptElement.setAttribute("async", "true");
     scriptElement.setAttribute(
       "src",
-      "https://www.googletagmanager.com/gtag/js?id=ENTERID"
+      "https://www.googletagmanager.com/gtag/js?id=ENTERID",
     );
     scriptElement.setAttribute("data-scriptid", "ga");
 
     firstScriptElement.parentNode.insertBefore(
       scriptElement,
-      firstScriptElement
+      firstScriptElement,
     );
   }
   // =========================================================================

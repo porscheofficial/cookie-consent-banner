@@ -136,6 +136,9 @@ The appearance of the component can be influenced by updating the availabe CSS P
     --cookie-consent-banner-border-radius-buttons: 1rem;
     --cookie-consent-banner-border-radius-body: 0;
 
+    // BOX-SHADOW
+    --cookie-consent-banner-box-shadow: 0px -3px 13px 0px rgba(57, 57, 57, 0.38);
+
     /* SPACINGS */
     --cookie-consent-banner-spacings-container-padding-top: 1rem;
     --cookie-consent-banner-spacings-container-padding-left: 1rem;
@@ -170,14 +173,16 @@ For full control over the styles we provide you these CSS parts to customize com
 5. `cookie-consent-banner::part(description-main)` for styling the main description text
 6. `cookie-consent-banner::part(description-settings)` for styling the description text on the expanded settings
 7. `cookie-consent-banner::part(headline)` for styling the headline
+8. `cookie-consent-banner::part(body)` for styling the banner body
 
 ```html
 <style>
-  cookie-consent-banner::part(primary-button) {
+  cookie-consent-banner::part(button-accept-all) {
     text-transform: uppercase;
   }
 
-  cookie-consent-banner::part(secondary-button) {
+  cookie-consent-banner::part(button-persist-selection),
+  cookie-consent-banner::part(button-essential-only) {
     text-transform: uppercase;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   }
