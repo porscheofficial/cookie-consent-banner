@@ -1118,7 +1118,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@porscheofficial/cookie-consent-banner-react@workspace:packages/cookie-consent-banner-react"
   dependencies:
-    "@porscheofficial/cookie-consent-banner": 4.0.2
+    "@porscheofficial/cookie-consent-banner": 4.0.3
     "@porscheofficial/eslint-config-porschedigital-react": 4.0.0
     "@types/react": 18.2.21
     "@types/react-dom": 18.2.7
@@ -1135,7 +1135,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@porscheofficial/cookie-consent-banner@4.0.2, @porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner":
+"@porscheofficial/cookie-consent-banner@4.0.3, @porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner":
   version: 0.0.0-use.local
   resolution: "@porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner"
   dependencies:

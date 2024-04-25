@@ -2,41 +2,45 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.3](https://github.com/porscheofficial/cookie-consent-banner/compare/v4.0.2...v4.0.3) (2024-04-25)
+
+- introduce new stylable CSS part `body`
+- introduce new CSS variable `--cookie-consent-banner-box-shadow`
+- document box-shadow css var + body part, fix incorrect exampl
+
 ### [4.0.2](https://github.com/porscheofficial/cookie-consent-banner/compare/v4.0.1...v4.0.2) (2024-02-27)
 
 - upgrade dependencies
 
 ## [4.0.0](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.5...v4.0.0) (2023-10-09)
 
-* The `cookieDomain` property has been replaced by the domain property of the more flexible `cookieAttributes` object property.
-* feat: enable a more flexible way of styling with the `::parts` pseudo selector
-* feat: enable customization of the cookie attributes for the consent cookie via the `cookieAttributes` Property
-General improvements
-* the consent cookie is now stored in a URI encoded format
+- The `cookieDomain` property has been replaced by the domain property of the more flexible `cookieAttributes` object property.
+- feat: enable a more flexible way of styling with the `::parts` pseudo selector
+- feat: enable customization of the cookie attributes for the consent cookie via the `cookieAttributes` Property
+  General improvements
+- the consent cookie is now stored in a URI encoded format
 
 ## [3.1.5](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.4...v3.1.5) (2023-08-14)
 
-* fix: correctly publish package
+- fix: correctly publish package
 
 ## [3.1.4](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.3...v3.1.4) (2023-08-11)
 
 ### Bug Fixes
 
-* 🐛 fix: correctly apply css var primary-border ([09fb63e](https://github.com/porscheofficial/cookie-consent-banner/commit/09fb63e93db9c6b3c8259d6039d345719edb212e))
-
+- 🐛 fix: correctly apply css var primary-border ([09fb63e](https://github.com/porscheofficial/cookie-consent-banner/commit/09fb63e93db9c6b3c8259d6039d345719edb212e))
 
 ## [3.1.3](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.2...v3.1.3) (2023-04-25)
 
 ### Bug Fixes
 
-* 🐛 correctly parse cookie ([80e434e](https://github.com/porscheofficial/cookie-consent-banner/commit/80e434e4b0f5c4af74b746b46241f0d8bbdeafcc))
+- 🐛 correctly parse cookie ([80e434e](https://github.com/porscheofficial/cookie-consent-banner/commit/80e434e4b0f5c4af74b746b46241f0d8bbdeafcc))
 
 ## [3.1.2](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.1.1...v3.1.2) (2023-03-15)
 
-
 ### Bug Fixes
 
-* correctly identify empty cookie value | fix [#12](https://github.com/porscheofficial/cookie-consent-banner/issues/12) ([c3c3a66](https://github.com/porscheofficial/cookie-consent-banner/commit/c3c3a661fea8f865fe48088ccb127af80a85b446)) – thanks @diesieben07!
+- correctly identify empty cookie value | fix [#12](https://github.com/porscheofficial/cookie-consent-banner/issues/12) ([c3c3a66](https://github.com/porscheofficial/cookie-consent-banner/commit/c3c3a661fea8f865fe48088ccb127af80a85b446)) – thanks @diesieben07!
 
 ## [3.1.1](https://github.com/porscheofficial/cookie-consent-banner/compare/v3.0.1...v3.1.1) (2023-02-23)
 
