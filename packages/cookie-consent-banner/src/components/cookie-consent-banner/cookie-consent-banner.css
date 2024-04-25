@@ -11,6 +11,9 @@
 --cookie-consent-banner-colors-background-body: rgba(25,31,34,0.92);
 --cookie-consent-banner-colors-text: #fff;
 
+// BOX-SHADOW
+--cookie-consent-banner-box-shadow: 0px -3px 13px 0px rgba(57, 57, 57, 0.38);
+
 // BORDER-RADIUS
 --cookie-consent-banner-border-radius-buttons: 1rem;
 --cookie-consent-banner-border-radius-body: 0;
@@ -104,6 +107,12 @@
   --internal-cookie-consent-banner-border-radius-body: var(
     --cookie-consent-banner-border-radius-body,
     var(--theme-ui-radii-default, 0)
+  );
+
+  /* BOX-SHADOW */
+  --internal-cookie-consent-banner-box-shadow: var(
+    --cookie-consent-banner-box-shadow,
+    0px -3px 13px 0px rgba(57, 57, 57, 0.38)
   );
 
   /* SPACINGS */
@@ -231,7 +240,7 @@
   padding-right: var(
     --internal-cookie-consent-banner-spacings-body-padding-right
   );
-  box-shadow: 0px -3px 13px 0px rgba(57, 57, 57, 0.38);
+  box-shadow: var(--internal-cookie-consent-banner-box-shadow);
 }
 
 .cc_headline {
