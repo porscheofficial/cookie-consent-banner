@@ -213,6 +213,7 @@ export class CookieConsentBanner {
         <div
           class="cc_body"
           role="dialog"
+          part="body"
           aria-modal="true"
           aria-label="Cookie Consent Management"
           tabIndex={-1}
