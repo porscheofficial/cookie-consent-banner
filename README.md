@@ -1,7 +1,6 @@
+![cookie-consent-banner](./assets/heroWide.png)
+
 <div align="center">
-  <a target="_blank" rel="noopener noreferrer" href="https://github.com/porscheofficial/cookie-consent-banner/">
-    <img src="https://github.com/porscheofficial/cookie-consent-banner/raw/main/assets/logo.svg" alt="" width="200" height="200"/>
-  </a>
 
 # Cookie Consent Banner
 
