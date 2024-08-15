@@ -51,4 +51,4 @@ and [create a branch](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branchi
 Just make sure that:
 
 - Your pull request is focused and you avoid unrelated commits
-- You read and accept our [Contributor License Agreement](/CONTRIBUTOR_LICENSE_AGREEMENT.md)
+- You read and accept our [Contributor License Agreement](https://opensource.porsche.com/docs/cla)
