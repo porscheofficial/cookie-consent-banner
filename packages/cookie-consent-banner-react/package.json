@@ -13,10 +13,10 @@
     "build:old": "rimraf ./lib && yarn build:module && yarn build:commonjs",
     "build": "npm run tsc",
     "tsc": "tsc -p . --outDir ./dist",
-    "eslint:ci": "eslint src/index.ts --ext .js,.jsx,.tsx,.ts -f stylish",
-    "eslint:fix": "eslint src/index.ts --fix --ext .js,.jsx,.tsx,.ts  -f stylish --quiet",
-    "prettier:ci": "prettier --check ./src/index.ts",
-    "prettier:fix": "prettier --write ./src/index.ts",
+    "eslint:ci": "eslint lib/index.ts --ext .js,.jsx,.tsx,.ts -f stylish",
+    "eslint:fix": "eslint lib/index.ts --fix --ext .js,.jsx,.tsx,.ts  -f stylish --quiet",
+    "prettier:ci": "prettier --check ./lib/index.ts",
+    "prettier:fix": "prettier --write ./lib/index.ts",
     "test:ci": "yarn prettier:ci && yarn eslint:ci",
     "release:prepare": "standard-version"
   },
@@ -48,12 +48,12 @@
     "@stencil/react-output-target": "^1.2.0",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "eslint": "9.39.1",
+    "eslint": "^8.57.1",
     "prettier": "3.6.2",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "rimraf": "6.1.0",
     "standard-version": "9.5.0",
-    "typescript": "5.9.3"
+    "typescript": "5.1.6"
   }
 }

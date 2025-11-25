@@ -37,7 +37,6 @@ export const stringifyCookie = (
   return `${cookieString}; ${attributesString}`;
 };
 
-
 export const defaultCookieAttributes: CookieAttributes = {
   path: "/",
   expires: 7,
@@ -46,7 +45,7 @@ export const defaultCookieAttributes: CookieAttributes = {
 export const safeCookie = (
   ...attrs: Parameters<typeof stringifyCookie>
 ): void => {
-  if (document === undefined) {
+  if (typeof document === "undefined") {
     return;
   }
   const [name, value, attributes] = attrs;

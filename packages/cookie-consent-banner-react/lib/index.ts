@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 
@@ -9,10 +9,10 @@ const isCustomEvent = (
 ): event is CustomEvent<{
   acceptedCategories: string[];
 }> => {
-  if (!Object.prototype.hasOwnProperty.call(event, "detail")) return false;
+  if (!Object.hasOwn(event, "detail")) return false;
   const { detail } = event as unknown as { detail: Record<string, unknown> };
 
-  if (!Object.prototype.hasOwnProperty.call(detail, "acceptedCategories")) return false;
+  if (!Object.hasOwn(detail, "acceptedCategories")) return false;
   return Array.isArray(detail.acceptedCategories);
 };
 

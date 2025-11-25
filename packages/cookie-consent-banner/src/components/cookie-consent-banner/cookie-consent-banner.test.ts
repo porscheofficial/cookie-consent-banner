@@ -1,5 +1,4 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
-import type { Protocol } from "puppeteer";
 
 const cookieBannerFullyConfigured = `
 <cookie-consent-banner
@@ -43,9 +42,7 @@ describe("Cookie Consent Banner", () => {
     }, innerSelector);
   };
 
-  const getConsentCookie = async (): Promise<
-    Protocol.Network.Cookie | undefined
-  > =>
+  const getConsentCookie = async () =>
     (await page.cookies()).find(
       (cookie) => cookie.name === "cookies_accepted_categories",
     );

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --write ."
+    "prettier:fix": "prettier --write ./app/"
   },
   "dependencies": {
     "@porscheofficial/cookie-consent-banner-react": "workspace:*",
