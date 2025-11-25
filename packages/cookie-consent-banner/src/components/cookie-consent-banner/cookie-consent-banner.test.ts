@@ -1,5 +1,7 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
 
+type Cookie = Awaited<ReturnType<E2EPage['cookies']>>[number];
+
 const cookieBannerFullyConfigured = `
 <cookie-consent-banner
   btn-label-accept-and-continue="Agree and continue"
@@ -42,7 +44,7 @@ describe("Cookie Consent Banner", () => {
     }, innerSelector);
   };
 
-  const getConsentCookie = async () =>
+  const getConsentCookie = async (): Promise<Cookie | undefined> =>
     (await page.cookies()).find(
       (cookie) => cookie.name === "cookies_accepted_categories",
     );
