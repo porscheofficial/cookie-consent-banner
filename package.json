@@ -1,7 +1,8 @@
 {
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
     "release:prepare": "echo \"Root doesn't have release:prepare defined.\"",
@@ -9,8 +10,8 @@
   },
   "devDependencies": {
     "@porscheofficial/prettier-config-porschedigital": "4.0.0",
-    "@types/node": "20.11.16",
-    "typescript": "5.2.2"
+    "@types/node": "24.10.0",
+    "typescript": "5.9.3"
   },
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@4.10.3"
 }

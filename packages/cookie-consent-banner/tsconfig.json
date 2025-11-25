@@ -1,18 +1,19 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "lib": ["dom", "es2022"],
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "es2022",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "jsx": "react",
     "jsxFactory": "h",
-    "strict": false,
-    "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
-    "useDefineForClassFields": false,        /* Fix stencil bug: https://github.com/ionic-team/stencil/issues/3130 */
-    /* Module Resolution Options */
-    "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "strictNullChecks": true
+    "jsxFragmentFactory": "h.Fragment"
   },
-  "include": [
-    "src",
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

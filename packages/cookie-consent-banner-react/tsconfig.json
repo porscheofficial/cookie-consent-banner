@@ -1,9 +1,17 @@
 {
-      "extends": "../../tsconfig.json",
-      "compilerOptions": {
-        "declaration": true, /* Generates corresponding '.d.ts' file. */
-        "declarationDir": "./lib/typescript",
-        "outDir": "./lib", /* Redirect output structure to the directory. */
-        "moduleResolution": "node",
-      }
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "declarationDir": "./dist/types"
+  },
+  "include": ["lib"],
+  "exclude": ["node_modules"]
 }

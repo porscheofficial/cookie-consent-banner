@@ -1,16 +1,18 @@
+"use client"
+
 import { useEffect, useState } from "react";
 
-export * from "./stencilproxy/components";
+export * from "./components/stencil-generated/components";
 
 const isCustomEvent = (
   event: Event,
 ): event is CustomEvent<{
   acceptedCategories: string[];
 }> => {
-  if (!Object.hasOwn(event, "detail")) return false;
+  if (!Object.prototype.hasOwnProperty.call(event, "detail")) return false;
   const { detail } = event as unknown as { detail: Record<string, unknown> };
 
-  if (!Object.hasOwn(detail, "acceptedCategories")) return false;
+  if (!Object.prototype.hasOwnProperty.call(detail, "acceptedCategories")) return false;
   return Array.isArray(detail.acceptedCategories);
 };
 
