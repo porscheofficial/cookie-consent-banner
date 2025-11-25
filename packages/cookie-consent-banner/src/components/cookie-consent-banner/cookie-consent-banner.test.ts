@@ -1,6 +1,6 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
 
-type Cookie = Awaited<ReturnType<E2EPage['cookies']>>[number];
+type Cookie = Awaited<ReturnType<E2EPage["cookies"]>>[number];
 
 const cookieBannerFullyConfigured = `
 <cookie-consent-banner
