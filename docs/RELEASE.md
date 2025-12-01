@@ -16,8 +16,8 @@ Yes, but keep in mind that one PR must only equal to one feature or fix.
 
 ## Create a release
 
-1. Run tests: `yarn workspaces foreach -p run test:ci`
-2. Run `yarn workspaces foreach -p run release:prepare`
+1. Run tests: `yarn workspaces foreach -Ap run test:ci`
+2. Run `yarn workspaces foreach -Ap run release:prepare`
 3. Build base: `yarn workspace @porscheofficial/cookie-consent-banner run build`
 4. Build react: `yarn workspace @porscheofficial/cookie-consent-banner-react run build`
 5. Check `changelogs`
