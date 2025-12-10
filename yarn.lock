@@ -1543,6 +1543,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@porscheofficial/cookie-consent-banner-root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@porscheofficial/cookie-consent-banner-root@workspace:."
+  dependencies:
+    "@porscheofficial/prettier-config-porschedigital": "npm:4.0.0"
+    "@types/node": "npm:24.10.0"
+    typescript: "npm:5.2.2"
+  languageName: unknown
+  linkType: soft
+
 "@porscheofficial/cookie-consent-banner@npm:4.0.3, @porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner":
   version: 0.0.0-use.local
   resolution: "@porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner"
@@ -9117,16 +9127,6 @@ __metadata:
   checksum: 10c0/a21305aac72013083bd0dec92162b0f7f24cacf57c876ca601ec76e892895952c9ea592c1c07f23b8c125f7979c2b17f7fb565e386d03ee4c1f0952ac4ab0d75
   languageName: node
   linkType: hard
-
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  dependencies:
-    "@porscheofficial/prettier-config-porschedigital": "npm:4.0.0"
-    "@types/node": "npm:24.10.0"
-    typescript: "npm:5.2.2"
-  languageName: unknown
-  linkType: soft
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
