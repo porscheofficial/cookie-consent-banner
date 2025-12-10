@@ -41,7 +41,7 @@
     }
   },
   "dependencies": {
-    "@porscheofficial/cookie-consent-banner": "workspace:*"
+    "@porscheofficial/cookie-consent-banner": "4.0.3"
   },
   "devDependencies": {
     "@porscheofficial/eslint-config-porschedigital-react": "4.0.0",
