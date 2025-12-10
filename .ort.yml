@@ -17,6 +17,9 @@ excludes:
     - pattern: "scripts/**"
       reason: "BUILD_TOOL_OF"
       comment: "Used for Deployment"
+    - pattern: "examples/**"
+      reason: "EXAMPLE_OF"
+      comment: "Example Projects"
   scopes:
     - pattern: "devDependencies"
       reason: "DEV_DEPENDENCY_OF"
