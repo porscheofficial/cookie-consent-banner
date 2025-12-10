@@ -1,4 +1,5 @@
 {
+  "name": "@porscheofficial/cookie-consent-banner",
   "private": true,
   "workspaces": [
     "packages/*",
