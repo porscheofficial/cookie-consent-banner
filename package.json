@@ -1,5 +1,5 @@
 {
-  "name": "@porscheofficial/cookie-consent-banner",
+  "name": "@porscheofficial/cookie-consent-banner-root",
   "private": true,
   "workspaces": [
     "packages/*",
