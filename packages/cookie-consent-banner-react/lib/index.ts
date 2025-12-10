@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
-export * from "./stencilproxy/components";
+export * from "./components/stencil-generated/components";
 
 const isCustomEvent = (
   event: Event,

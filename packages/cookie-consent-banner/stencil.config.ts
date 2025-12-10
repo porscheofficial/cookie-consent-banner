@@ -13,18 +13,20 @@ export const config: Config = {
       type: "dist",
       esmLoaderPath: "../loader",
     },
-    reactOutputTarget({
-      componentCorePackage: "@porscheofficial/cookie-consent-banner",
-      proxiesFile:
-        "../cookie-consent-banner-react/src/stencilproxy/components.ts",
-      includeDefineCustomElements: true,
+    reactOutputTarget({      
+      outDir: '../cookie-consent-banner-react/lib/components/stencil-generated/',
     }),
+    {
+      type: 'dist-custom-elements',
+      customElementsExportBehavior: 'auto-define-custom-elements',
+      externalRuntime: false,
+    },
     {
       type: "www",
       serviceWorker: null, // disable service workers
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: "shell",
   },
 };

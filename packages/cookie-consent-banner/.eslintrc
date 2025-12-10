@@ -1,7 +1,7 @@
 {
   "extends": "@porscheofficial/eslint-config-porschedigital-react",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
@@ -9,9 +9,9 @@
     "n/no-unpublished-import": [
       "error",
       {
-        "ignoreTypeImport": true
-      }
-    ]
+        "ignoreTypeImport": true,
+      },
+    ],
   },
-  "plugins": ["eslint-plugin-html"]
+  "plugins": ["eslint-plugin-html"],
 }

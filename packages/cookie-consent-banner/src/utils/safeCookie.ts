@@ -40,14 +40,17 @@ export const stringifyCookie = (
 export const defaultCookieAttributes: CookieAttributes = {
   path: "/",
   expires: 7,
-  domain: document.location.hostname,
 };
 
 export const safeCookie = (
   ...attrs: Parameters<typeof stringifyCookie>
 ): void => {
+  if (typeof document === "undefined") {
+    return;
+  }
   const [name, value, attributes] = attrs;
   document.cookie = stringifyCookie(name, value, {
+    domain: document.location.hostname,
     ...defaultCookieAttributes,
     ...attributes,
   });

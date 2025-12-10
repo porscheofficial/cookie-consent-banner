@@ -1,2 +1,2 @@
-src/stencilproxy/**/*
-lib/
+lib/components/stencil-generated/**/*
+dist/
