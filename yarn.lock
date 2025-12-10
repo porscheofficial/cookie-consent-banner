@@ -1525,7 +1525,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@porscheofficial/cookie-consent-banner-react@workspace:packages/cookie-consent-banner-react"
   dependencies:
-    "@porscheofficial/cookie-consent-banner": "workspace:*"
+    "@porscheofficial/cookie-consent-banner": "npm:4.0.3"
     "@porscheofficial/eslint-config-porschedigital-react": "npm:4.0.0"
     "@stencil/react-output-target": "npm:1.2.0"
     "@types/react": "npm:19.2.2"
@@ -1543,7 +1543,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@porscheofficial/cookie-consent-banner@workspace:*, @porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner":
+"@porscheofficial/cookie-consent-banner@npm:4.0.3, @porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner":
   version: 0.0.0-use.local
   resolution: "@porscheofficial/cookie-consent-banner@workspace:packages/cookie-consent-banner"
   dependencies:
