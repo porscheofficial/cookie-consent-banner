@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/porscheofficial/cookie-consent-banner/compare/v4.0.3...v4.1.0) (2026-02-17)
+
+### Features
+
+- update dependencies ([0ffec4c](https://github.com/porscheofficial/cookie-consent-banner/commit/0ffec4c45d70a494758d371ee160cba6f4c16776))
+- add example projects ([Next.js](../../examples/next/) and [React/Vite](../../examples/react-vite/))
+
 ### [4.0.3](https://github.com/porscheofficial/cookie-consent-banner/compare/v4.0.2...v4.0.3) (2024-04-25)
 
 - introduce new stylable CSS part `body`
